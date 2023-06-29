@@ -1,5 +1,5 @@
 import { GoogleLogout } from 'react-google-login';
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
