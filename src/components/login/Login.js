@@ -1,61 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './login.css'
 import { GoogleLogin } from 'react-google-login';
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
-export default function Login(){
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    // const [newUser, setNewUser] = useState('')
-    
-    const handleSubmit = (e) =>{
-      e.preventDefault();
-      setEmail('');
-      setPassword('');
-    };
+export default function Login(props){
 
-    const onSuccess = (res) => {
-      console.log('LOGIN SUCCESS! Current user: ', res);
-    }
+  const onSuccess = (res) => {
+    console.log('LOGIN SUCCESS! Current user: ', res.profileObj);
+    // const userProfileData = {}
+    props.setUserProfile(res.profileObj);
+  }
+  const onFailure = (res) => {
+    console.log('LOGIN FAILED! res: ', res);
+  }
 
-    const onFailure = (res) => {
-      console.log('LOGIN FAILED! res: ', res);
-    }
+ 
+  if(props.userProfile){
+    return <h2>Welcome {props.userProfile.givenName}!</h2>
+  }else{
     return (
-        <div className="login">
-            <h2>Sign In</h2>
-            <form className="form" onSubmit={handleSubmit}>
-          <div>
-            <label>Email</label>
-            <input 
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            ></input>
-          </div>
-          <div>
-            <label>Password</label>
-            <input 
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </div>
-        <button className="signInBtn" type="submit">SignIn</button>
-        </form>
-        <div id="googleSignInBtn">
-          <GoogleLogin
-          clientId={clientId}
-          buttonText="SignIn"
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          cookiePolicy={'single_host_origin'}
-          isSignedIn={true}
-          />
-        </div>
-        </div>
-    );
+      <div id="googleSignInBtn">
+      <GoogleLogin
+      clientId={clientId}
+      buttonText="SignIn"
+      onSuccess={onSuccess}
+      onFailure={onFailure}
+      cookiePolicy={'single_host_origin'}
+      isSignedIn={true}
+      />
+    </div>
+    )
+  }   
 }
 
 

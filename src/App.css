@@ -9,13 +9,13 @@ dark gray - 8C8C8C */
 
 
 body{
-  background-color: rgb(136, 216, 112);
-  color: rgb(192, 114, 13);
+  background-color: whitesmoke;
+  color: blue;
   font-family: Arial;
 }
 
 .container{
-  border: 3px solid rgb(36, 165, 126);
+  border: 3px solid rgb(133, 137, 244);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,6 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid rgb(169, 117, 212);
+  border: 3px solid rgb(59, 59, 60);
   width: 100%;
 }
