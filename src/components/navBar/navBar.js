@@ -9,7 +9,7 @@ export default function NavBar(){
   
       return (
   <nav className="navBar">
-  <div className="page" id="nav">Vacation App</div>
+  <div className="page" id="nav">Vacation Appm </div>
     <div>
       <ul>
         <Link className="navBarLi" onClick={() => setClick(!click)} to='Home' smooth={true}>Home</Link>
