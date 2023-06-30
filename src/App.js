@@ -3,10 +3,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script'
 import './App.css';
-// import NavBar from './components/navBar/navBar'
+import NavBar from './components/navBar/navBar'
 import Login from './components/login/Login';
 import Logout from './components/logout/logout'
-
+import { Routes, Route } from "react-router-dom";
+import Home from './components/home/Home';
+import Locations from './components/locations/Locations';
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
@@ -31,17 +33,19 @@ if(userProfile){
   <div className='container'>
   <h2>Welcome {userProfile.givenName}!</h2>
     <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
+        <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/locations" element={<Locations />} />
+      </Routes>
   </div>
  </div>
  );
 }else{
   return (
-  <div className="Vacation-App">
-  {/* <NavBar/> */}
-  <div className='container'>
-    <Login userProfile={userProfile} setUserProfile={setUserProfile}/>
-  </div>
- </div>
+    <div className="App">
+          <Login userProfile={userProfile} setUserProfile={setUserProfile}/>
+    </div>
   );
   }
 }
