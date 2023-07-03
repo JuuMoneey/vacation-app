@@ -15,6 +15,7 @@ body{
 }
 
 .container{
+  margin-top: 90px;
   border: 3px solid rgb(133, 137, 244);
   display: flex;
   flex-direction: column;
@@ -31,3 +32,5 @@ body{
   border: 3px solid rgb(59, 59, 60);
   width: 100%;
 }
+
+

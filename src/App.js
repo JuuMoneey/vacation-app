@@ -9,11 +9,14 @@ import Logout from './components/logout/logout'
 import { Routes, Route } from "react-router-dom";
 import Home from './components/home/Home';
 import Locations from './components/locations/Locations';
+// import { getData, getDataById, addData, deleteData, updateData } from './queries';
+
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
 function App() {
   const [userProfile, setUserProfile] = useState(null)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     function start() {
@@ -29,11 +32,12 @@ function App() {
 if(userProfile){
   return (
   <div className="Vacation-App">
-  {/* <NavBar/> */}
+  <div className='navBar'>
+  <NavBar/>
+  </div>
   <div className='container'>
   <h2>Welcome {userProfile.givenName}!</h2>
     <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
-        <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/locations" element={<Locations />} />
@@ -44,7 +48,7 @@ if(userProfile){
 }else{
   return (
     <div className="App">
-          <Login userProfile={userProfile} setUserProfile={setUserProfile}/>
+          <Login userProfile={userProfile} setUserProfile={setUserProfile} user={user} setUser={setUser}/>
     </div>
   );
   }
