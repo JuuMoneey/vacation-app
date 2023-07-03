@@ -9,6 +9,7 @@ import Logout from './components/logout/logout'
 import { Routes, Route } from "react-router-dom";
 import Home from './components/home/Home';
 import Locations from './components/locations/Locations';
+import Attractions from './components/Attractions/Attractions'
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
@@ -29,7 +30,7 @@ function App() {
 if(userProfile){
   return (
   <div className="Vacation-App">
-  {/* <NavBar/> */}
+  <NavBar/>
   <div className='container'>
   <h2>Welcome {userProfile.givenName}!</h2>
     <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
@@ -37,6 +38,7 @@ if(userProfile){
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="/Attractions" element={<Attractions />} />
       </Routes>
   </div>
  </div>

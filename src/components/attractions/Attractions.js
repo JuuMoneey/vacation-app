@@ -74,7 +74,7 @@ try {
 	console.error(error);
 }
 
-function App() {
+function Attractions() {
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [attractions, setAttractions] = useState([]);
@@ -191,4 +191,4 @@ function App() {
   );
 }
 
-export default App;
+export default Attractions;
