@@ -8,9 +8,6 @@ import { gapi } from 'gapi-script'
 // import NavBar from './components/navBar/navBar'
 import Login from './components/login/Login';
 import Logout from './components/logout/logout'
-import { Routes, Route } from "react-router-dom";
-import Home from './components/home/Home';
-import Locations from './components/locations/Locations';
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
