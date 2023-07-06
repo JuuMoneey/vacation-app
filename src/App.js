@@ -48,6 +48,10 @@ if(userProfile){
 }else{
   return (
     <div className="App">
+        <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/locations" element={<Locations />} />
+      </Routes>
           <Login userProfile={userProfile} setUserProfile={setUserProfile} user={user} setUser={setUser}/>
     </div>
   );
