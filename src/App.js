@@ -9,6 +9,7 @@ import Logout from './components/logout/logout'
 import { Routes, Route } from "react-router-dom";
 import Home from './components/home/Home';
 import Locations from './components/locations/Locations';
+import Attractions from './components/Attractions/Attractions'
 import Profile from './components/profile/profile';
 
 
@@ -32,15 +33,14 @@ function App() {
 if(userProfile){
   return (
   <div className="Vacation-App">
-  <div className='navBar'>
-  <NavBar/>
-  </div>
+  {/* <NavBar/> */}
   <div className='container'>
   <h2>Welcome {userProfile.givenName}!</h2>
     <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="/Attractions" element={<Attractions />} />
       </Routes>
   </div>
  </div>

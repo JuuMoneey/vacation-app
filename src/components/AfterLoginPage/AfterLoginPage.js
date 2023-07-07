@@ -1,9 +1,24 @@
-import "./styles.css";
+
 import React, { useEffect, useState } from 'react';
+import './AfterLoginPage.css';
+import Logo from './Logo.png';
+import { Link } from 'react-router-dom';
+
 
 const AfterLoginPage = () => {
   return (
     <div>
+
+
+<div className="top-bar">
+    <Link to="/" className="back-button">Back</Link>
+    <button className="sign-in-button">Sign In</button>
+    <button className="settings-button">Settings</button>
+  </div>
+  <div className="logo-container">
+    <img className="logo" src={Logo} alt="Logo" />
+  </div>
+
      {/* <Navbar/> */}
      <p> Welcome "Username"</p>
      <div className='PastTrips'> 
