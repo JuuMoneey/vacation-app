@@ -1,8 +1,10 @@
 import React from 'react';
 import './home.css';
-import Logo from './Logo.png';
+import Logo from './Logo.png'
+import { Link } from 'react-router-dom';
+import Map from '../map/Map'
 
-function Home() {
+function Home(){
   return (
     <div>
       <div className="top-bar">
@@ -15,8 +17,9 @@ function Home() {
       <div className="home-page">
         <h1 className="home-page-title">Travel App</h1>
         <button className="home-page-button">Travel Log</button>
-        <button className="home-page-button">Discover</button>
+        <Link to="/locations" className="home-page-button">Discover</Link>
       </div>
+      <Map />
     </div>
   );
 }

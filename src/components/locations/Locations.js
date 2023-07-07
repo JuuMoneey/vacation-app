@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './locations.css';
 
-const Locations = () => {
+function Locations(){
     const locations = [
         { name: 'Location 1', image: 'locale1.jpg' },
         { name: 'Location 2', image: 'locale2.jpg' },

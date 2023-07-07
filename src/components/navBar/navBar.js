@@ -9,13 +9,13 @@ export default function NavBar(){
   
       return (
   <nav className="navBar">
-  <div className="page" id="nav">Vacation Appm </div>
+  <div className="page" id="nav">Travel App</div>
     <div>
       <ul>
         <Link className="navBarLi" onClick={() => setClick(!click)} to='Home' smooth={true}>Home</Link>
         <Link className="navBarLi" onClick={() => setClick(!click)} to='Attractions' smooth={true}>Attractions</Link>
         <Link className="navBarLi" onClick={() => setClick(!click)} to='Locations' smooth={true}>Locations</Link>
-        <Link className="navBarLi" onClick={() => setClick(!click)} to='Login' smooth={true}>Login</Link>
+        <Link className="navBarLi" onClick={() => setClick(!click)} to='logout' smooth={true}>Logout</Link>
         {/* <Link className="navBarLi" onClick={() => setClick(!click)} to='' smooth={true}></Link> */}
       </ul>
     </div>
@@ -25,4 +25,3 @@ export default function NavBar(){
   </nav>
       );
   }
-
