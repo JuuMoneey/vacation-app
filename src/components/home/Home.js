@@ -1,8 +1,8 @@
 import React from 'react';
-import './home.css';
+import './Home.css';
 import Logo from './Logo.png'
 import { Link } from 'react-router-dom';
-import Map from '../map/Map'
+import Map from '../Map/Map'
 
 function Home(){
   return (

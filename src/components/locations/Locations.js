@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './locations.css';
+import './Locations.css';
 
 function Locations(){
     const locations = [
