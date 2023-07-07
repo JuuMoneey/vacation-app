@@ -11,7 +11,7 @@ import Home from './components/home/Home';
 import Locations from './components/locations/Locations';
 import Attractions from './components/Attractions/Attractions'
 import Profile from './components/profile/profile';
-import Searchbar from './Components/Searchbar/searchbar'
+import Searchbar from './components/Searchbar/searchbar'
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
