@@ -1,22 +1,22 @@
+path {
+  fill: #192748;
+}
+
 html {
   font-family: system-ui, sans-serif;
   font-size: 1.25rem;
 }
 
-body {
-  margin: 0;
+.rsm-geography:focus {
+  outline: none;
 }
 
-svg {
-  display: inline-block;
-  vertical-align: middle;
+.rsm-marker {
+  fill: #FF0000;
+  stroke: none;
 }
 
-path {
-  fill: #2a354d;
-}
-
-.App {
-  font-family: sans-serif;
-  text-align: center;
+.markerText {
+  font-family: "system-ui";
+  fill: #5D5A6D;
 }
