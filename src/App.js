@@ -1,20 +1,61 @@
-import './App.css';
+// import logo from './logo.svg';
 import React from 'react';
+import { useEffect, useState } from 'react';
+import { gapi } from 'gapi-script'
+import './App.css';
+import NavBar from './components/navBar/navBar'
+import Login from './components/login/Login';
+import Logout from './components/logout/logout'
 import { Routes, Route } from "react-router-dom";
-import Home from './Components/home/Home';
-import Locations from './Components/locations/Locations';
+import Home from './components/home/Home';
+import Locations from './components/locations/Locations';
+import Attractions from './components/Attractions/Attractions'
+import Profile from './components/profile/profile';
 import Searchbar from './Components/Searchbar/searchbar'
 
+const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
+
 function App() {
+  const [userProfile, setUserProfile] = useState(null)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    function start() {
+      gapi.client.init({ 
+        clientId: clientId,
+        scope: ''
+      })
+    };
+    gapi.load('client:auth2', start)
+  });
+
+
+if(userProfile){
   return (
-    <div className="App">
-      <Searchbar />
+  <div className="Vacation-App">
+  {/* <NavBar/> */}
+  <div className='container'>
+  <h2>Welcome {userProfile.givenName}!</h2>
+    <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/locations" element={<Locations />} />
+        <Route path="/Attractions" element={<Attractions />} />
       </Routes>
+  </div>
+ </div>
+ );
+}else{
+  return (
+    <div className="App">
+        <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/locations" element={<Locations />} />
+      </Routes>
+          <Login userProfile={userProfile} setUserProfile={setUserProfile} user={user} setUser={setUser}/>
     </div>
   );
+  }
 }
 
 export default App;
