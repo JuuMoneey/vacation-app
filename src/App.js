@@ -34,7 +34,7 @@ if(userProfile){
   <div className='container'>
   <h2>Welcome {userProfile.givenName}!</h2>
     <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
-        <NavBar/>
+        {/* <NavBar/> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/locations" element={<Locations />} />
