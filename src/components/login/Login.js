@@ -50,7 +50,7 @@ const onSubmit = (e) => {
     user_email: userEmail,
   }
 
-  fetch('http://localhost3030/users', {
+  fetch('http://localhost3030', {
   method: 'POST',
   headers: {
     'content-type' : 'application/JSON' 
