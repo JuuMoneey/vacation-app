@@ -1,7 +1,7 @@
 import { AiOutlineMenu, AiOutlineMenuUnfold } from "react-icons/ai";
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
-import './navBar.css'
+import './NavBar.css'
 
 export default function NavBar(){
     const [hover, setHover] = useState(false);
