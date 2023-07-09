@@ -74,22 +74,29 @@ const onFailure = (res) => {
   console.log("LOGIN FAILED! res: ", res);
 };
 
-  if (props.userProfile) {
-    return <h2>Welcome {props.userProfile.givenName}!</h2>;
-  } else {
-    return (
-      <div id="googleSignInBtn">
-        <GoogleLogin
-          clientId={clientId}
-          buttonText="SignIn"
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          cookiePolicy={"single_host_origin"}
-          isSignedIn={true}
-        />
-      </div>
-    );
-  }
+if (props.userProfile) {
+  return (
+    <div>
+      <h2>Welcome {props.userProfile.givenName}!</h2>
+      {props.userProfile.imageUrl && (
+        <img src={props.userProfile.imageUrl} alt="Profile Picture" />
+      )}
+    </div>
+  );
+} else {
+  return (
+    <div id="googleSignInBtn">
+      <GoogleLogin
+        clientId={clientId}
+        buttonText="SignIn"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+        isSignedIn={true}
+      />
+    </div>
+  );
+}
 }
 
 

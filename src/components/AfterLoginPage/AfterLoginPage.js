@@ -5,101 +5,53 @@ import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 
 
-const AfterLoginPage = ({userProfile}) => {
-  console.log('After Login', userProfile)
+const AfterLoginPage = ({ userProfile }) => {
+  console.log(userProfile)
+  //  const [pastTrips, setPastTrips] = useState([]);
+  const [savedTrips, setSavedTrips] = useState([]);
+  //  const [futureTrips, setFutureTrips] = useState ([]);
+  //  const [bookingHistory, setBookingHistory] = useState ([]);
+  // const [reviews, setReviews] = useState ([]);
 
-  // Sample data for past trips
-  const pastTrips = [
-    { destination: 'Miami, Florida', imageUrl: '' },
-    { destination: 'Paris, France', imageUrl: '' },
-  ];
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // Sample data for future trips
-  const futureTrips = [
-    { destination: 'Tokyo, Japan', date: '2023-08-15' },
-    { destination: 'Sydney, Australia', date: '2023-10-20' },
-  ];
+  const fetchData = () => {
+    fetch("http://localhost:3030/savedtrips")
+      .then(res => res.json())
+      .then(data => setSavedTrips([...data]))
+      .catch(error => console.error('Error fetching data:', error))
+  }
 
-  //Sample date for trip history
-  const tripHistory = [
-  {id:1, destination: 'New York, NY', date:'2023-05-20'},
-  {id: 2, destination: 'London, UK', date:'2022-12-22'}
-]
-//Sample data for reviews
-const reviews = [
-  {id:1, trip: 'Miami, Florida', rating: 4, review: 'Great experience!'},
-  {id: 2, trip: 'Paris, France', rating: 5, review: 'Absolutely loved it!'}
-]
+
+
 
 
   return (
     <div>
       <p> Welcome {userProfile.givenName}</p>
       <div className="UserProfile">
-        <img src="" alt="Profile Picture" className="UserProfile_Picture" />
+        <img src={userProfile.imageUrl} alt="Profile Picture" className="userProfile_Image" />
         <div className="UserProfile_Details">
-          <h2 className="UserProfile_Name">{userProfile.givenName}</h2>
+
         </div>
       </div>
-     {/* <PastTripsMap/> */}
-      <div className="PastTrips">
-        <h3>Past Trips</h3>
-        {pastTrips.map((trip, index) => (
-          <div key={index}>
-            <img style={{ width: '300px' }} src={trip.imageUrl} alt={trip.destination} />
-            <p>{trip.destination}</p>
-          </div>
-        ))}
-        <button>Map View</button>
-        <button>Add New</button>
-      </div>
-     {/* <FutureTrips/> */}
-      <div className="FutureTrips">
-        <h3>Future Trips</h3>
-        {futureTrips.map((trip, index) => (
+      <div>
+        <h3>Saved Trips</h3>
+        {savedTrips.map((trip, index) => (
           <div key={index}>
             <p>{trip.destination}</p>
             <p>Date: {trip.date}</p>
           </div>
         ))}
-        <button>Plan Your Next Trip</button>
       </div>
-      {/*Booking History */}
-      <div className="TripHistory">
-        <h3>Trip History</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Trip ID</th>
-              <th>Destination</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tripHistory.map((trip)=>(
-              <tr key={trip.id}>
-                <td>{trip.id}</td>
-                <td>{trip.destination}</td>
-                <td>{trip.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="Reviews">
-        <h3>Reviews and Ratings</h3>
-        {reviews.map((review) => (
-          <div key={review.id}>
-            <p>Trip: {review.trip}</p>
-            <p>Rating: {review.rating}</p>
-            <p>Review: {review.review}</p>
-          </div>
-        ))}
-        </div>
-      </div>
-    </div>
-  );
-};
 
+
+    </div>
+
+  )
+}
 export default AfterLoginPage;
 
 
