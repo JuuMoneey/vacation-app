@@ -8,7 +8,7 @@ import { gapi } from 'gapi-script'
 // import NavBar from './components/navBar/navBar'
 import Login from './components/login/Login';
 import Logout from './components/logout/logout'
-import Attractions from './components/Attractions/Attractions'
+import Attractions from './components/attractions/Attractions'
 import Profile from './components/profile/profile';
 import Searchbar from './components/Searchbar/searchbar'
 import AfterLoginPage from './components/AfterLoginPage/AfterLoginPage'

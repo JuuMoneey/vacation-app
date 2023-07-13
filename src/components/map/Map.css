@@ -1,10 +1,28 @@
+.map-container {
+  border: 10px solid black;
+  width: 1100px;
+  height: 825px;
+  position: relative;
+  margin: 15px auto;
+  background-color: rgb(220, 220, 220);
+}
+
 path {
-  fill: #192748;
+  fill: #263b6c;
 }
 
 html {
   font-family: system-ui, sans-serif;
   font-size: 1.25rem;
+}
+
+body {
+  margin: 0;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .rsm-geography:focus {
@@ -19,4 +37,8 @@ html {
 .markerText {
   font-family: "system-ui";
   fill: #5D5A6D;
+}
+
+.rsm-geography:hover {
+  fill: #FFD700;
 }
