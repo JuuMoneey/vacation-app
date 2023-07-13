@@ -26,21 +26,21 @@ export default function Login(props) {
     props.setUserProfile(res.profileObj);
   };
 
-  const updateId = (e) => {
-  setUserId(e.target.value)
-}
+//   const updateId = (e) => {
+//   setUserId(e.target.value)
+// }
 
-const updateName = (e) => {
-  setUserName(e.target.value)
-}
+// const updateName = (e) => {
+//   setUserName(e.target.value)
+// }
 
-const updateEmail = (e) => {
-  setUserEmail(e.target.value)
-}
+// const updateEmail = (e) => {
+//   setUserEmail(e.target.value)
+// }
 
-const updateUserPhoto = (e) => {
-  setUserPhoto(e.target.value)
-}
+// const updateUserPhoto = (e) => {
+//   setUserPhoto(e.target.value)
+// }
 
 const onSubmit = (e) => {
   e.preventDefault()
@@ -48,9 +48,10 @@ const onSubmit = (e) => {
     user_id: userId,
     user_name: userName,
     user_email: userEmail,
+    user_photo: userPhoto,
   }
 
-  fetch('http://localhost3030', {
+  fetch(`http://localhost3030/login/${userObj.user_id}`, {
   method: 'POST',
   headers: {
     'content-type' : 'application/JSON' 
@@ -59,7 +60,7 @@ const onSubmit = (e) => {
 })
 .then(res => res.json())
 .then(res => {
-  console.log(res)
+  console.log('results', res)
 })
 .catch(error => {
   console.log(error)
@@ -74,23 +75,27 @@ const onFailure = (res) => {
   console.log("LOGIN FAILED! res: ", res);
 };
 
-  if (props.userProfile) {
-    return <h2>Welcome {props.userProfile.givenName}!</h2>;
-  } else {
-    return (
-      <div id="googleSignInBtn">
-        <GoogleLogin
-          clientId={clientId}
-          buttonText="SignIn"
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          cookiePolicy={"single_host_origin"}
-          isSignedIn={true}
+if (props.userProfile) {
+  return <h2>Welcome {props.userProfile.givenName}!</h2>;
+} else {
+  return (
+    <div id="googleSignInBtn">
+      {/* <img></img> */}
+      <h1>Travel App</h1>
+      <GoogleLogin
+        clientId={clientId}
+        buttonText="SignIn"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+        isSignedIn={true}
+        onSubmit={onSubmit}
         />
-      </div>
+        </div>
     );
   }
 }
+
 
 
 

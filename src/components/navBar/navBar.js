@@ -1,4 +1,4 @@
-import { AiOutlineMenu, AiOutlineMenuUnfold } from "react-icons/ai";
+// import { AiOutlineMenu, AiOutlineMenuUnfold } from "react-icons/ai";
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import './NavBar.css'
@@ -12,16 +12,17 @@ export default function NavBar(){
   <div className="page" id="nav">Travel App</div>
     <div>
       <ul>
-        <Link className="navBarLi" onClick={() => setClick(!click)} to='Home' smooth={true}>Home</Link>
+        <Link className="navBarLi" onClick={() => setClick(!click)} to='/' smooth={true}>Home</Link>
+        <Link className=''>Map</Link>
         <Link className="navBarLi" onClick={() => setClick(!click)} to='Attractions' smooth={true}>Attractions</Link>
-        <Link className="navBarLi" onClick={() => setClick(!click)} to='Locations' smooth={true}>Locations</Link>
-        <Link className="navBarLi" onClick={() => setClick(!click)} to='logout' smooth={true}>Logout</Link>
-        {/* <Link className="navBarLi" onClick={() => setClick(!click)} to='' smooth={true}></Link> */}
+        <Link className="navBarLi" onClick={() => setClick(!click)} to='/Profile' smooth={true}> Profile</Link>
+        <Link className="navBarLi" onClick={() => setClick(!click)} to='/Logout' smooth={true}>Logout</Link>
       </ul>
     </div>
       <div className='navHamburger' onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onClick={() => setClick(!click)}>
-    {!hover && !click ? <AiOutlineMenuUnfold/> : <AiOutlineMenu/>}
+    {/* {!hover && !click ? <AiOutlineMenuUnfold/> : <AiOutlineMenu/>} */}
      </div>
   </nav>
       );
   }
+

@@ -4,6 +4,7 @@ import Logo from './Logo.png'
 import { Link } from 'react-router-dom';
 import Map from '../Map/Map'
 import AfterLoginPage from '../AfterLoginPage/AfterLoginPage';
+ 
 
 function Home({userProfile}){
   
