@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const Weather = (props) => {
+const Weather = ({latitude,longitude,setLatitude,setLongitude}) => {
     const [weather, setWeather] = useState(null);  
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0);
+    // const [latitude, setLatitude] = useState('');
+    // const [longitude, setLongitude] = useState('');
 
     const WeatherAPIkey = 'c2b759dfa462e91ac01969de25a25a29';
   
@@ -24,29 +24,10 @@ const Weather = (props) => {
   return (
     <div>
        <div>
-       <form onSubmit={handleSubmit}>
-          <label>
-            Latitude:
-            <input
-              type="text"
-              defaultValuevalue={latitude}
-              onChange={(e) => setLatitude(e.target.value)}
-            />
-          </label>
-          <label>
-            Longitude:
-            <input
-              type="text"
-              defaultValuevalue={longitude}
-              onChange={(e) => setLongitude(e.target.value)}
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
         <div>
-        <h4>Weather</h4>
         {weather && (
-          <div>
+            <div>
+              <h4>Weather</h4>
             <p>Name: {weather.name}</p>
             <p>Temperature: {weather.main.temp}</p>
             <p>Weather main: {weather.weather.main}</p>
