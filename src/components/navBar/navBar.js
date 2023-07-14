@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 export default function NavBar() {
-  const [hover, setHover] = useState(false);
-  const [click, setClick] = useState(false);
 
   return (
     <nav className="navBar">
@@ -15,27 +13,24 @@ export default function NavBar() {
         <ul>
           <Link
             className="navBarLi"
-            onClick={() => setClick(!click)}
             to="/"
             smooth={true}
           >
             Home
           </Link>
-          <Link className="navBarLi" onClick={() => setClick(!click)} to="/Map">
+          <Link className="navBarLi" to="/map">
             Map
           </Link>
           <Link
             className="navBarLi"
-            onClick={() => setClick(!click)}
-            to="/Attractions"
+            to="/attractions"
             smooth={true}
           >
             Attractions
           </Link>
           <Link
             className="navBarLi"
-            onClick={() => setClick(!click)}
-            to="/Profile"
+            to="/profile"
             smooth={true}
           >
             {" "}
@@ -43,20 +38,13 @@ export default function NavBar() {
           </Link>
           <Link
             className="navBarLi"
-            onClick={() => setClick(!click)}
-            to="/Logout"
+            to="/logout"
             smooth={true}
           >
             Logout
           </Link>
         </ul>
       </div>
-      <div
-        className="navHamburger"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        onClick={() => setClick(!click)}
-      ></div>
     </nav>
   );
 }

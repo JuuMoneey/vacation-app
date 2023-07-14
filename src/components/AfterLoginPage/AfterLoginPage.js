@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi'
 import Login from '../Login/Login';
+import Video from '../../Video/Afterimage.mp4'
 
-const AfterLoginPage = ({ userProfile, video }) => {
+const AfterLoginPage = ({ userProfile}) => {
    const [savedTrips, setSavedTrips] = useState([]);
-  // const [destinations, setDestinations] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
@@ -23,13 +23,6 @@ const AfterLoginPage = ({ userProfile, video }) => {
       .then(res => res.json())
       .then(data => setSavedTrips(data))
       .catch(error => console.error('Error fetching saved trips:', error));
-
-
-
-  //   fetch('http://localhost:3030/destinations')
-  //     .then(res => res.json())
-  //     .then(data => setDestinations(data))
-  //     .catch(error => console.error('Error fetching destinations:', error));
    };
 
   const handleOptionChange = option => {
@@ -61,7 +54,7 @@ const AfterLoginPage = ({ userProfile, video }) => {
       </div>
       <section className="afterlogin">
         <div className="overlay"></div>
-        <video src={video} muted autoPlay loop type="video/mp4"></video>
+        <video src={Video} muted autoPlay loop type="video/mp4"></video>
 
         <div className="afterlogincontent container">
           <div className="textDiv">

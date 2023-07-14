@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import './Attractions.css';
 
@@ -9,7 +10,8 @@ const Attractions = () => {
   const [type, setType] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [weather, setWeather] = useState(null);
-
+  let { id } = useParams(); 
+  console.log("Here is the destination ID!",id)
   const apiKey = '7adcac2dc9msh088284d4d774577p1c3f3cjsnef3afb93ada7';
   const WeatherAPIkey = 'c2b759dfa462e91ac01969de25a25a29';
 
@@ -64,7 +66,7 @@ const Attractions = () => {
       .then((res) => res.json())
       .then((data) => setDestinations(data))
       .catch((error) => console.error('Error fetching destinations:', error));
-  });
+  },[]);
 
   useEffect(() => {
     const cachedHotels = localStorage.getItem('hotels');

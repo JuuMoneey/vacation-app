@@ -4,7 +4,6 @@ import Logo from './Logo.png'
 import { Link } from 'react-router-dom';
 import Map from '../Map/Map'
 import AfterLoginPage from '../AfterLoginPage/AfterLoginPage';
-import Video from '../../Video/Afterimage.mp4'
 
 function Home({userProfile}){
   
@@ -19,7 +18,7 @@ function Home({userProfile}){
       </div>
       <div className="home-page">
         <h1 className="home-page-title">Travel App</h1>
-        <AfterLoginPage userProfile={userProfile} video ={Video}/>
+        <AfterLoginPage userProfile={userProfile}/>
         <button className="home-page-button">Travel Log</button>
         <Link to="/locations" className="home-page-button">Discover</Link>
       </div>

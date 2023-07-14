@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Locations.css';
 
 function Locations() {
@@ -10,6 +10,8 @@ function Locations() {
   const [locations, setLocations] = useState([]);
   const [searchTerm, setSearchTerm] = useState(searchTermFromURL);
   const [selectedCountry, setSelectedCountry] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:3030/destinations')
@@ -66,7 +68,7 @@ function Locations() {
             <img className="location-image" src={location.photo} alt={location.name} />
             <h2 className="location-name">{location.name}</h2>
             <p className="location-country">{location.country}</p>
-            <button className="location-button">Listing</button>
+            <button onClick={()=> navigate(`/locations/${location.id}`)} className="location-button">Listing</button>
           </div>
         ))}
       </div>
