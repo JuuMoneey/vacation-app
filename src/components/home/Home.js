@@ -1,10 +1,13 @@
 import React from 'react';
-import './home.css';
+import './Home.css';
 import Logo from './Logo.png'
 import { Link } from 'react-router-dom';
-import Map from '../map/Map'
+import Map from '../Map/Map'
+import AfterLoginPage from '../AfterLoginPage/AfterLoginPage';
+ 
 
-function Home(){
+function Home({userProfile}){
+  
   return (
     <div>
       <div className="top-bar">
@@ -16,6 +19,7 @@ function Home(){
       </div>
       <div className="home-page">
         <h1 className="home-page-title">Travel App</h1>
+        <AfterLoginPage userProfile={userProfile}/>
         <button className="home-page-button">Travel Log</button>
         <Link to="/locations" className="home-page-button">Discover</Link>
       </div>

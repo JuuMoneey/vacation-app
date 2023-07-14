@@ -37,13 +37,6 @@ const AddPastTrip = ({ refreshData }) => {
 
   return (
     <div>
-      <div className="top-bar">
-        <button className="sign-in-button">Sign In</button>
-        <button className="settings-button">Settings</button>
-      </div>
-      <div className="logo-container">
-        <img className="logo" src={Logo} alt="Logo" />
-      </div>
 
       <form onSubmit={handleFormSubmit}>
         <label>Trip Name</label>

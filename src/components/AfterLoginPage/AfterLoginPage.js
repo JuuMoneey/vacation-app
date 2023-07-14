@@ -5,8 +5,8 @@ import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
 
 
-const AfterLoginPage = () => {
-  const username = "John Doe"; 
+const AfterLoginPage = ({userProfile}) => {
+  console.log('After Login', userProfile)
 
   // Sample data for past trips
   const pastTrips = [
@@ -34,29 +34,11 @@ const reviews = [
 
   return (
     <div>
-      {/* <Navbar/> */}
-      <nav className="Navbar">
-        <ul className="Navbar_List">
-          <li className="Navbar_Item">
-            <a href="#home">Home</a>
-          </li>
-          <li className="Navbar_Item">
-            <a href="#explore">Explore</a>
-          </li>
-          <li className="Navbar_Item">
-            <a href="#bookings">Bookings</a>
-          </li>
-          <li className="Navbar_Item">
-            <a href="#profile">Profile</a>
-          </li>
-        </ul>
-      </nav>
-
-      <p> Welcome {username}</p>
+      <p> Welcome {userProfile.givenName}</p>
       <div className="UserProfile">
         <img src="" alt="Profile Picture" className="UserProfile_Picture" />
         <div className="UserProfile_Details">
-          <h2 className="UserProfile_Name">{username}</h2>
+          <h2 className="UserProfile_Name">{userProfile.givenName}</h2>
         </div>
       </div>
      {/* <PastTripsMap/> */}

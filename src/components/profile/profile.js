@@ -1,18 +1,18 @@
-import './profile.css'
+import "./Profile.css";
 
-export default function Profile(props){
+export default function Profile({ userProfile }) {
+console.log(userProfile)
+    return (
+      <div className="profile">
+        <h2>Welcome {userProfile.givenName}</h2>
+         <img src={userProfile.imageUrl} alt="Profile Picture" className="UserProfile_Picture" />
+         <p></p>
+          <div>
+            <p>{userProfile.name}</p>
+            <p>{userProfile.email}</p>
+          </div>
+        
+      </div>
+    );
+  };
 
-return (
-    <div className="profile">
-       <div className="profile-picture">
-        <img src={props.user.profilePicture} alt="Profile" />
-      </div>
-      <div className="profile-details">
-        <h2>{props.user.username}</h2>
-        <p>{props.user.email}</p>
-        <p>{props.user.bio}</p>
-        <p>{props.user.location}</p>
-      </div>
-    </div>
-);
-}
