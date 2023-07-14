@@ -1,105 +1,142 @@
-
 import React, { useEffect, useState } from 'react';
 import './AfterLoginPage.css';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
+import { GrLocation } from 'react-icons/gr';
+import { HiFilter } from 'react-icons/hi'
+import Login from '../Login/Login';
+
+const AfterLoginPage = ({ userProfile, video }) => {
+   const [savedTrips, setSavedTrips] = useState([]);
+  // const [destinations, setDestinations] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+
+   
+
+    fetch("http://localhost:3030/getTrips/1")
+      .then(res => res.json())
+      .then(data => setSavedTrips(data))
+      .catch(error => console.error('Error fetching saved trips:', error));
 
 
-const AfterLoginPage = ({userProfile}) => {
-  console.log('After Login', userProfile)
 
-  // Sample data for past trips
-  const pastTrips = [
-    { destination: 'Miami, Florida', imageUrl: '' },
-    { destination: 'Paris, France', imageUrl: '' },
-  ];
+  //   fetch('http://localhost:3030/destinations')
+  //     .then(res => res.json())
+  //     .then(data => setDestinations(data))
+  //     .catch(error => console.error('Error fetching destinations:', error));
+   };
 
-  // Sample data for future trips
-  const futureTrips = [
-    { destination: 'Tokyo, Japan', date: '2023-08-15' },
-    { destination: 'Sydney, Australia', date: '2023-10-20' },
-  ];
-
-  //Sample date for trip history
-  const tripHistory = [
-  {id:1, destination: 'New York, NY', date:'2023-05-20'},
-  {id: 2, destination: 'London, UK', date:'2022-12-22'}
-]
-//Sample data for reviews
-const reviews = [
-  {id:1, trip: 'Miami, Florida', rating: 4, review: 'Great experience!'},
-  {id: 2, trip: 'Paris, France', rating: 5, review: 'Absolutely loved it!'}
-]
-
+  const handleOptionChange = option => {
+    setSelectedOption(option);
+  };
 
   return (
     <div>
-      <p> Welcome {userProfile.givenName}</p>
-      <div className="UserProfile">
-        <img src="" alt="Profile Picture" className="UserProfile_Picture" />
-        <div className="UserProfile_Details">
-          <h2 className="UserProfile_Name">{userProfile.givenName}</h2>
+      <div className="WelcomeSection">
+        <div className="UserProfile">
+          <img
+            src={userProfile.imageUrl}
+            alt="Profile Picture"
+            className="userProfile_Image"
+          />
+          <h3>Welcome, {userProfile.givenName}!</h3>
+        </div>
+        <div className="DropdownMenu">
+          <select
+            value={selectedOption}
+            onChange={e => handleOptionChange(e.target.value)}
+          >
+            <option value="">Select</option>
+            <option value="booking">Booking History</option>
+            <option value="past">Past Trips</option>
+            <option value="saved">Saved Trips</option>
+          </select>
         </div>
       </div>
-     {/* <PastTripsMap/> */}
-      <div className="PastTrips">
-        <h3>Past Trips</h3>
-        {pastTrips.map((trip, index) => (
-          <div key={index}>
-            <img style={{ width: '300px' }} src={trip.imageUrl} alt={trip.destination} />
-            <p>{trip.destination}</p>
+      <section className="afterlogin">
+        <div className="overlay"></div>
+        <video src={video} muted autoPlay loop type="video/mp4"></video>
+
+        <div className="afterlogincontent container">
+          <div className="textDiv">
+            <span className="smallText"></span>
+            <h1 className="afterLoginTitle">Search Your Next Trip</h1>
           </div>
-        ))}
-        <button>Map View</button>
-        <button>Add New</button>
-      </div>
-     {/* <FutureTrips/> */}
-      <div className="FutureTrips">
-        <h3>Future Trips</h3>
-        {futureTrips.map((trip, index) => (
-          <div key={index}>
-            <p>{trip.destination}</p>
+          <div className="cardDiv grid">
+            <div className="destinationInput">
+              <label htmlFor="city">Search your destination:</label>
+              <div className="input flex">
+                <input type="text" placeholder="Enter here..." />
+                <GrLocation className="icon" />
+              </div>
+            </div>
+            
+            <div className="dateInput">
+              <label htmlFor="date">Select your date</label>
+              <div className="input flex">
+                <input type="date" />
+              </div>
+            </div>
+          <div className="priceInput">
+            <div className="label_total.flex">
+              <label htmlFor="price">Max price</label>
+              <h3 className="total">$5000</h3>
+            </div>
+            <div className="input flex">
+              <input type='range' max="5000" min="1000" />
+            </div>
+          </div>
+          <div className="searchOptions flex">
+            <HiFilter className='icon' />
+            <span>More filters</span>
+          </div>
+        </div>
+          </div>
+      </section>
+      <section className="savedTrips section">
+        <h2>Saved Trips</h2>
+        {savedTrips.map(trip => (
+          <div key={trip.id} className="tripCard">
+            <h3>{trip.name}</h3>
             <p>Date: {trip.date}</p>
           </div>
         ))}
-        <button>Plan Your Next Trip</button>
-      </div>
-      {/*Booking History */}
-      <div className="TripHistory">
-        <h3>Trip History</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Trip ID</th>
-              <th>Destination</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tripHistory.map((trip)=>(
-              <tr key={trip.id}>
-                <td>{trip.id}</td>
-                <td>{trip.destination}</td>
-                <td>{trip.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="Reviews">
-        <h3>Reviews and Ratings</h3>
-        {reviews.map((review) => (
-          <div key={review.id}>
-            <p>Trip: {review.trip}</p>
-            <p>Rating: {review.rating}</p>
-            <p>Review: {review.review}</p>
+      </section>
+
+      {/* <div>
+        <section className="destinations section">
+          <div className="secTitle">
+            <h3 className="title">
+              Most visited destinations
+          {destinations.map(destination => (
+            <div key={destination.id} className="destinationsCard">
+              <img
+                src={destination.photo}
+                alt={destination.name}
+                className="DestinationImage"
+              />
+              <div className="DestinationDetails">
+                <h3>{destination.name}</h3>
+                <p>Country: {destination.country}</p>
+              </div>
+            </div>
+          ))}
+          </h3>
           </div>
-        ))}
-        </div>
-      </div>
+          <div className="secContent grid">
+
+          </div>
+        </section>
+        
+      </div> */}
     </div>
   );
 };
 
 export default AfterLoginPage;
-
-

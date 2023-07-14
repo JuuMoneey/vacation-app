@@ -18,9 +18,10 @@ export default function Login(props) {
     props.setUserProfile(res.profileObj);
   };
 
-  //   const updateId = (e) => {
-  //   setUserId(e.target.value)
-  // }
+
+  const updateId = (e) => {
+  setUserId(e.target.value)
+}
 
   // const updateName = (e) => {
   //   setUserName(e.target.value)
@@ -68,25 +69,29 @@ console.log(props.userProfile)
     console.log("LOGIN FAILED! res: ", res);
   };
 
-  if (props.userProfile) {
-    return <h2>Welcome {props.userProfile.givenName}!</h2>;
-  } else {
-    return (
-      <div id="googleSignInBtn">
-        {/* <img></img> */}
-        <h1>Travel App</h1>
-        <GoogleLogin
-          clientId={clientId}
-          buttonText="SignIn"
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-          cookiePolicy={"single_host_origin"}
-          isSignedIn={true}
-          onSubmit={onSubmit}
-        />
-      </div>
-    );
-  }
+if (props.userProfile) {
+  return (
+    <div>
+      <h2>Welcome {props.userProfile.givenName}!</h2>
+      {props.userProfile.imageUrl && (
+        <img src={props.userProfile.imageUrl} alt="Profile Picture" />
+      )}
+    </div>
+  );
+} else {
+  return (
+    <div id="googleSignInBtn">
+      <GoogleLogin
+        clientId={clientId}
+        buttonText="SignIn"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+        isSignedIn={true}
+      />
+    </div>
+  );
+}
 }
 
 // client
