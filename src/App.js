@@ -12,6 +12,7 @@ import Attractions from './components/Attractions/Attractions'
 import Profile from './components/Profile/Profile';
 import Searchbar from './components/Searchbar/Searchbar'
 import NavBar from './components/NavBar/NavBar'
+import Video from './Video/Afterimage.mp4'
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
