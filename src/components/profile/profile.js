@@ -1,40 +1,18 @@
-import './Profile.css'
-import { useState } from 'react';
+import "./Profile.css";
 
+export default function Profile({ userProfile }) {
+console.log(userProfile)
+    return (
+      <div className="profile">
+        <h2>Welcome {userProfile.givenName}</h2>
+         <img src={userProfile.imageUrl} alt="Profile Picture" className="UserProfile_Picture" />
+         <p></p>
+          <div>
+            <p>{userProfile.name}</p>
+            <p>{userProfile.email}</p>
+          </div>
+        
+      </div>
+    );
+  };
 
-export default function Profile(userObj){
-  const [profile, setProfile] = useState(null)
-
-
-  fetch('https://localhost3030//')
-  .then(res => res.json())
-  .then(data => console.log(data))
-
-return (
-  <div className='profile'>
-    <p>Welcome {userObj.givenName}</p>
-    <div className='profileDetails'>
-    <img src={userObj.userPhoto} alt="Profile Picture" className="UserProfile_Picture" />
-    <p>About Me</p>
-    </div>
-    <div className='profileHistory'>
-      <p>past trips</p>
-      <p>Future trips</p>
-    </div>
-  </div>
-  );
-}
-
-
-
-// <div className="profile">
-//    <div className="profile-picture">
-//     <img src={props.user.profilePicture} alt="Profile" />
-//   </div>
-//   <div className="profile-details">
-//     <h2>{props.user.username}</h2>
-//     <p>{props.user.email}</p>
-//     <p>{props.user.bio}</p>
-//     <p>{props.user.location}</p>
-//   </div>
-// </div>

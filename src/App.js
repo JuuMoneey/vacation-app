@@ -6,6 +6,15 @@ import Home from './components/Home/Home';
 import Locations from './components/Locations/Locations';
 import { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script'
+<<<<<<< HEAD
+=======
+import Login from './components/Login/Login'
+import Logout from './components/Logout/Logout';
+import Attractions from './components/Attractions/Attractions';
+import Profile from './components/Profile/Profile';
+// import { Link } from 'react-scroll';
+// import Searchbar from './components/Searchbar/Searchbar'
+>>>>>>> ac483ab468ad15f55289cc547208f29d819577b5
 
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout'
@@ -41,14 +50,17 @@ if(userProfile){
         <Route path="/" element={<Home userProfile={userProfile} />} />
         <Route path="/locations" element={<Locations />} />
         <Route path="/Attractions" element={<Attractions />} />
+        <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>
       </Routes>
+      
+
   </div>
  </div>
  );
 }else{
   return (
     <div className="App">
-          <Login userProfile={userProfile} setUserProfile={setUserProfile} user={user} setUser={setUser}/>
+          <Login userProfile={userProfile} setUserProfile={setUserProfile} />
     </div>
   );
   }
