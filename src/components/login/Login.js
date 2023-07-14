@@ -31,17 +31,17 @@ export default function Login(props) {
   setUserId(e.target.value)
 }
 
-const updateName = (e) => {
-  setUserName(e.target.value)
-}
+// const updateName = (e) => {
+//   setUserName(e.target.value)
+// }
 
-const updateEmail = (e) => {
-  setUserEmail(e.target.value)
-}
+// const updateEmail = (e) => {
+//   setUserEmail(e.target.value)
+// }
 
-const updateUserPhoto = (e) => {
-  setUserPhoto(e.target.value)
-}
+// const updateUserPhoto = (e) => {
+//   setUserPhoto(e.target.value)
+// }
 
 const onSubmit = (e) => {
   e.preventDefault()
@@ -49,9 +49,10 @@ const onSubmit = (e) => {
     user_id: userId,
     user_name: userName,
     user_email: userEmail,
+    user_photo: userPhoto,
   }
 
-  fetch('http://localhost3030', {
+  fetch(`http://localhost3030/login/${userObj.user_id}`, {
   method: 'POST',
   headers: {
     'content-type' : 'application/JSON' 
@@ -60,7 +61,7 @@ const onSubmit = (e) => {
 })
 .then(res => res.json())
 .then(res => {
-  console.log(res)
+  console.log('results', res)
 })
 .catch(error => {
   console.log(error)
@@ -99,6 +100,7 @@ if (props.userProfile) {
   );
 }
 }
+
 
 
 
