@@ -6,13 +6,14 @@ import Home from './components/Home/Home';
 import Locations from './components/Locations/Locations';
 import { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script'
-// import NavBar from './components/navBar/navBar'
-import Login from './components/Login/Login';
-import Logout from './components/Logout/Logout'
-import Attractions from './components/Attractions/Attractions'
 import Profile from './components/Profile/Profile';
 import Searchbar from './components/Searchbar/Searchbar'
 import AfterLoginPage from './components/AfterLoginPage/AfterLoginPage'
+import Login from './components/Login/Login'
+import Logout from './components/Logout/Logout';
+import Attractions from './components/Attractions/Attractions';
+// import { Link } from 'react-scroll';
+import Video from './Video/Afterimage.mp4'
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
