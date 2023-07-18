@@ -20,7 +20,7 @@ const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleuserc
 function App() {
   const [userProfile, setUserProfile] = useState(null)
   const [user, setUser] = useState(null)
-
+  console.log(userProfile)
   useEffect(() => {
     function start() {
       gapi.client.init({

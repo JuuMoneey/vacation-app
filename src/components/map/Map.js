@@ -91,7 +91,7 @@ function Map() {
         </Geographies>
         {markers.map(({ name, coordinates }, index) => (
           <Marker key={index} coordinates={coordinates} style={{ pointerEvents: "none" }}>
-            <circle r={1} fill="#FF0000" />
+            <circle r={2} fill="#FF0000" />
             <text className="markerText" textAnchor="middle" y={-15} style={{ pointerEvents: "none" }}>
               {name}
             </text>
