@@ -1,21 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Logo from './Logo.png';
 
-const AddPastTrip = ({ refreshData }) => {
+const AddPastTrip = ({ userProfile}) => {
   const [tripName, setTripName] = useState('');
-  const [userId, setUserId] = useState('');
+  const [userId, setUserId] = useState(userProfile.googleId);
   const [itemId, setItemId] = useState('');
+  const [destinationId, setDestinationId] = useState('');
+  const [date, setDate] =useState('');  
+  const [destinations, setDestinations] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3030/destinations`)
+      .then((res) => res.json())
+      .then(res => {
+        setDestinations(res)
+      })
+  }, []); 
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const pastTripObject = {
-      trip_name: tripName,
+      name: tripName,
       user_id: userId,
-      item_id: itemId,
+      destination_id: destinationId,
+      date
     };
 
-    fetch('vacation-api/past-trips', {
+    fetch('http://localhost:3030/saved_trips', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +37,7 @@ const AddPastTrip = ({ refreshData }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        refreshData();
+        setDate("");
         setTripName('');
         setUserId('');
         setItemId('');
@@ -34,9 +46,10 @@ const AddPastTrip = ({ refreshData }) => {
         console.error(error);
       });
   };
-
+  
   return (
     <div>
+<p>{userProfile.name}</p>
 
       <form onSubmit={handleFormSubmit}>
         <label>Trip Name</label>
@@ -49,15 +62,24 @@ const AddPastTrip = ({ refreshData }) => {
         <label>User ID</label>
         <input
           type="text"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={userProfile.googleId}
         />
 
-        <label>Item ID</label>
-        <input
-          type="text"
-          value={itemId}
-          onChange={(e) => setItemId(e.target.value)}
+        <label>Destination</label>
+        <select onChange={(e) => setDestinationId(e.target.value)} value={destinationId}>
+            <option defaultValue>Select an Option</option>
+            {destinations.map(destination=><option key={destinationId} value={destination.id}>{destination.name}</option>)}
+        </select>
+
+   
+       <label>Start date:</label>
+        <input 
+        type="date" 
+        id="start"
+        name="trip-start"
+        value={date}
+        min="2023-07-01" max="2030-12-31"
+        onChange={(e) => setDate(e.target.value)}
         />
 
         <button type="submit">Submit</button>

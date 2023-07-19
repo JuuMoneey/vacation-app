@@ -4,14 +4,14 @@ import axios from 'axios';
 import './Attractions.css';
 
 const Attractions = () => {
-  const [hotels, setHotels] = useState([]);
+  const [places, setPlaces] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [type, setType] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [weather, setWeather] = useState(null);
   let { id } = useParams(); 
-  console.log("Here is the destination ID!",id)
+  // console.log("Here is the destination ID!",id)
   const apiKey = '7adcac2dc9msh088284d4d774577p1c3f3cjsnef3afb93ada7';
   const WeatherAPIkey = 'c2b759dfa462e91ac01969de25a25a29';
 
@@ -58,24 +58,30 @@ const Attractions = () => {
     } catch (error) {
       console.error(error);
     }
-    await fetchData(options, setHotels, 'hotels');
+    await fetchData(options, setPlaces, 'places');
   };
 
   useEffect(() => {
-    fetch('http://localhost:3030/destinations')
+    fetch(`http://localhost:3030/destinations/${id}`)
       .then((res) => res.json())
-      .then((data) => setDestinations(data))
+      .then((data) => {
+        setDestinations(data);
+          const { latitude, longitude } = data[0];
+          setLatitude(latitude);
+          setLongitude(longitude);
+      })
       .catch((error) => console.error('Error fetching destinations:', error));
-  },[]);
+  }, [id]); 
+
 
   useEffect(() => {
-    const cachedHotels = localStorage.getItem('hotels');
-    if (cachedHotels) {
-      setHotels(JSON.parse(cachedHotels));
+    const cachedPlaces = localStorage.getItem('places');
+    if (cachedPlaces) {
+      setPlaces(JSON.parse(cachedPlaces));
     } else {
       const options = {
         method: 'GET',
-        url: 'https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng',
+        url: `https://travel-advisor.p.rapidapi.com/hotels/list-by-latlng`,
         params: {
           latitude: latitude,
           longitude: longitude,
@@ -88,35 +94,17 @@ const Attractions = () => {
         },
       };
 
-      fetchData(options, setHotels, 'hotels');
+      fetchData(options, setPlaces, 'Places');
     }
   }, []);
 
   return (
     <div className="attractions-container">
-      <h3>Hotels</h3>
+      <h3>Browse through hotels,resturants and attractions</h3>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <div className="form-row">
-            <label htmlFor="latitude">Latitude:</label>
-            <input
-              type="text"
-              id="latitude"
-              value={latitude}
-              onChange={(e) => setLatitude(e.target.value)}
-            />
-          </div>
-          <div className="form-row">
-            <label htmlFor="longitude">Longitude:</label>
-            <input
-              type="text"
-              id="longitude"
-              value={longitude}
-              onChange={(e) => setLongitude(e.target.value)}
-            />
-          </div>
-          <div className="form-row">
-            <label htmlFor="type">Type:</label>
+            <label htmlFor="type">Select Hotel,Restaurants or attractions:</label>
             <select id="type" value={type} onChange={handleTypeChange}>
               <option value="">Select a type</option>
               <option value="restaurants">Restaurants</option>
@@ -127,24 +115,42 @@ const Attractions = () => {
           <button type="submit">Fetch Data</button>
         </form>
       </div>
+      <div>
+
+<div className="destinations">
+  {destinations.map((destination, index) => (
+    <div key={index} className="destination">
+      <p>View attractions of {destination.name}</p>
+      <p>ID: {destination.id}</p>
+      <img src={destination.photo} alt="destination" />
+      <div className="destination-details">
+        <h3>{destination.name}</h3>
+        <p>Country: {destination.country}</p>
+        <p>Longitude: {destination.longitude}</p>
+        <p>Latitude: {destination.latitude}</p>
+      </div>
+    </div>
+  ))}
+</div>
+</div>
       <h1>{type} Options</h1>
-      {hotels.map((hotel) => (
-        <div key={hotel.name} className="hotel-card">
-          <h4>{hotel.name}</h4>
-          <p>{hotel.ranking}</p>
-          <img src={hotel.photo?.images.large.url} alt="PLACE_PICTURE" />
-          <p>{hotel.awards?.ranking}</p>
-          <p>{hotel.address}</p>
-          <p>{hotel.rating}</p>
-          <p>{hotel?.phone}</p>
-          <button onClick={() => window.open(hotel.web_url, '_blank')}>
+      {places.map((place) => (
+        <div key={place.name} className="place-card">
+          <h4>{place.name}</h4>
+          <p>{place.ranking}</p>
+          <img src={place.photo?.images.large.url} alt="PLACE_PICTURE" />
+          <p>{place.awards?.ranking}</p>
+          <p>{place.address}</p>
+          <p>{place.rating}</p>
+          <p>{place?.phone}</p>
+          <button onClick={() => window.open(place.web_url, '_blank')}>
             Trip Advisor
           </button>
-          <button onClick={() => window.open(hotel.website, '_blank')}>
+          <button onClick={() => window.open(place.website, '_blank')}>
             Website
           </button>
-          <p>{hotel.price_level}</p>
-          <button onClick={() => window.open(hotel.website, '_blank')}>
+          <p>{place.price_level}</p>
+          <button onClick={() => window.open(place.website, '_blank')}>
             Add to your trip
           </button>
         </div>
@@ -162,31 +168,7 @@ const Attractions = () => {
           </div>
         )}
       </div>
-      <div>
-        <h3>View more locations</h3>
-        <div className="destinations">
-          {destinations.map((destination, index) => (
-            <div key={index} className="destination">
-              <p>ID: {destination.id}</p>
-              <img src={destination.photo} alt="destination" />
-              <div className="destination-details">
-                <h3>{destination.name}</h3>
-                <p>Country: {destination.country}</p>
-                <p>Longitude: {destination.longitude}</p>
-                <p>Latitude: {destination.latitude}</p>
-                <button
-                  onClick={() => {
-                    setLongitude(destination.longitude);
-                    setLatitude(destination.latitude);
-                  }}
-                >
-                  View attractions
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+   
     </div>
   );
 };
