@@ -7,6 +7,7 @@ import { HiFilter } from 'react-icons/hi'
 import Login from '../Login/Login';
 import Video from '../../Video/Afterimage.mp4'
 
+
 const AfterLoginPage = ({ userProfile}) => {
    const [savedTrips, setSavedTrips] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -30,7 +31,10 @@ const AfterLoginPage = ({ userProfile}) => {
   };
 
   return (
-    <div>
+    <div className="afterlogin-container">
+    <video className="afterlogin-video" src={Video} muted autoPlay loop type="video/mp4"></video>
+    <div className="afterlogin-overlay"></div>
+    <div className="afterlogin-content">
       <div className="WelcomeSection">
         <div className="UserProfile">
           <img
@@ -40,6 +44,44 @@ const AfterLoginPage = ({ userProfile}) => {
           />
           <h3>Welcome, {userProfile.givenName}!</h3>
         </div>
+      </div>
+      <div className="afterlogin-cardDiv">
+        <div className="destinationInput">
+          <label htmlFor="city">Search your destination:</label>
+          <div className="input flex">
+            <input type="text" placeholder="Enter here..." />
+            <GrLocation className="icon" />
+          </div>
+        </div>
+        <div className="dateInput">
+          <label htmlFor="date">Select your date</label>
+          <div className="input flex">
+            <input type="date" />
+          </div>
+        </div>
+        <div className="priceInput">
+          <div className="label_total.flex">
+            <label htmlFor="price">Max price</label>
+            <h3 className="total">$5000</h3>
+          </div>
+          <div className="input flex">
+            <input type='range' max="5000" min="1000" />
+          </div>
+        </div>
+        <div className="searchOptions flex">
+          <HiFilter className='icon' />
+          <span>More filters</span>
+        </div>
+      </div>
+    </div>
+      <section className="savedTrips section">
+        <h2>Saved Trips</h2>
+        {savedTrips.map(trip => (
+          <div key={trip.id} className="tripCard">
+            <h3>{trip.name}</h3>
+            <p>Date: {trip.date}</p>
+          </div>
+        ))}
         <div className="DropdownMenu">
           <select
             value={selectedOption}
@@ -51,85 +93,9 @@ const AfterLoginPage = ({ userProfile}) => {
             <option value="saved">Saved Trips</option>
           </select>
         </div>
-      </div>
-      <section className="afterlogin">
-        <div className="overlay"></div>
-        <video src={Video} muted autoPlay loop type="video/mp4"></video>
-
-        <div className="afterlogincontent container">
-          <div className="textDiv">
-            <span className="smallText"></span>
-            <h1 className="afterLoginTitle">Search Your Next Trip</h1>
-          </div>
-          <div className="cardDiv grid">
-            <div className="destinationInput">
-              <label htmlFor="city">Search your destination:</label>
-              <div className="input flex">
-                <input type="text" placeholder="Enter here..." />
-                <GrLocation className="icon" />
-              </div>
-            </div>
-            
-            <div className="dateInput">
-              <label htmlFor="date">Select your date</label>
-              <div className="input flex">
-                <input type="date" />
-              </div>
-            </div>
-          <div className="priceInput">
-            <div className="label_total.flex">
-              <label htmlFor="price">Max price</label>
-              <h3 className="total">$5000</h3>
-            </div>
-            <div className="input flex">
-              <input type='range' max="5000" min="1000" />
-            </div>
-          </div>
-          <div className="searchOptions flex">
-            <HiFilter className='icon' />
-            <span>More filters</span>
-          </div>
-        </div>
-          </div>
       </section>
-      <section className="savedTrips section">
-        <h2>Saved Trips</h2>
-        {savedTrips.map(trip => (
-          <div key={trip.id} className="tripCard">
-            <h3>{trip.name}</h3>
-            <p>Date: {trip.date}</p>
-          </div>
-        ))}
-      </section>
-
-      {/* <div>
-        <section className="destinations section">
-          <div className="secTitle">
-            <h3 className="title">
-              Most visited destinations
-          {destinations.map(destination => (
-            <div key={destination.id} className="destinationsCard">
-              <img
-                src={destination.photo}
-                alt={destination.name}
-                className="DestinationImage"
-              />
-              <div className="DestinationDetails">
-                <h3>{destination.name}</h3>
-                <p>Country: {destination.country}</p>
-              </div>
-            </div>
-          ))}
-          </h3>
-          </div>
-          <div className="secContent grid">
-
-          </div>
-        </section>
-        
-      </div> */}
-    </div>
-  );
+  </div>
+);
 };
 
 export default AfterLoginPage;

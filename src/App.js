@@ -16,6 +16,7 @@ import Attractions from './components/Attractions/Attractions';
 import Video from './Video/Afterimage.mp4'
 import AddPastTrip from './components/AddPastTrip/AddPastTrip';
 
+
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
 
 function App() {
@@ -38,7 +39,7 @@ if(userProfile){
   <div className="Vacation-App">
   <NavBar/>
   <div className='container'>
-    <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
+    {/* <Logout userProfile={userProfile} setUserProfile={setUserProfile}/> */}
       <Routes>
         <Route path="/" element={<Home userProfile={userProfile} />} />
         <Route path="/locations" element={<Locations />} />
