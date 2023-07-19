@@ -43,11 +43,6 @@ function Locations() {
 
   return (
     <div>
-      <div className="top-bar">
-        <Link to="/" className="back-button">Back</Link>
-        <button className="sign-in-button">Sign In</button>
-        <button className="settings-button">Settings</button>
-      </div>
       <div className="search-bar">
         <input
           type="text"
@@ -64,12 +59,13 @@ function Locations() {
       </div>
       <div className="locations-container">
         {filteredLocations.map((location, index) => (
-          <div className="location-box" key={index}>
-            <img className="location-image" src={location.photo} alt={location.name} />
-            <h2 className="location-name">{location.name}</h2>
-            <p className="location-country">{location.country}</p>
-            <button onClick={()=> navigate(`/locations/${location.id}`)} className="location-button">Listing</button>
-          </div>
+          <Link key={index} to={`/locations/${location.id}`} className="location-link">
+            <div className="location-box">
+              <img className="location-image" src={location.photo} alt={location.name} />
+              <h2 className="location-name">{location.name}</h2>
+              <p className="location-country">{location.country}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
