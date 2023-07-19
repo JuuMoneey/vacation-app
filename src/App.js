@@ -15,6 +15,7 @@ import Attractions from './components/Attractions/Attractions';
 // import { Link } from 'react-scroll';
 import Video from './Video/Afterimage.mp4'
 import AddPastTrip from './components/AddPastTrip/AddPastTrip';
+import Map from './components/Map/Map'
 
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
@@ -47,6 +48,7 @@ if(userProfile){
         <Route path="/attractions" element={<Attractions />} />
         <Route path="/addPastTrip" element={<AddPastTrip userProfile={userProfile}/>} />
         <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>
+        <Route path="/map" element={<Map userProfile={userProfile}/>}/>
       </Routes>
       
 

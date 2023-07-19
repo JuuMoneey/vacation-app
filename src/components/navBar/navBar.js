@@ -29,15 +29,6 @@ export default function NavBar() {
           className="navBarLi" to="/Map">
             Map
           </Link>
-
-          <Link
-            className="navBarLi"
-            to="/attractions"
-            smooth={true}
-          >
-            Attractions
-          </Link>
-
           <Link
             className="navBarLi"
             to="/profile"
