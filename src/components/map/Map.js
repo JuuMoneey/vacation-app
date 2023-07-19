@@ -91,7 +91,7 @@ function Map() {
         </Geographies>
         {markers.map(({ name, coordinates }, index) => (
           <Marker key={index} coordinates={coordinates}>
-            <circle r={2} fill="#FF0000" style={{ pointerEvents: "none" }}/>
+            <circle r={2} fill="#FF0000"  style={{ pointerEvents: "none" }}/>
           </Marker>
         ))}
         </ZoomableGroup>
