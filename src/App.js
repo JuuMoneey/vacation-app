@@ -12,7 +12,6 @@ import AfterLoginPage from './components/AfterLoginPage/AfterLoginPage'
 import Login from './components/Login/Login'
 import Logout from './components/Logout/Logout';
 import Attractions from './components/Attractions/Attractions';
-// import { Link } from 'react-scroll';
 import Video from './Video/Afterimage.mp4'
 import AddPastTrip from './components/AddPastTrip/AddPastTrip';
 import Map from './components/Map/Map'
@@ -33,14 +32,13 @@ function App() {
     };
     gapi.load('client:auth2', start)
   });
+  console.log(userProfile)
 
-console.log(userProfile)
 if(userProfile){
   return (
   <div className="Vacation-App">
   <NavBar/>
   <div className='container'>
-    {/* <Logout userProfile={userProfile} setUserProfile={setUserProfile}/> */}
       <Routes>
         <Route path="/" element={<Home userProfile={userProfile} />} />
         <Route path="/locations" element={<Locations />} />
@@ -50,8 +48,6 @@ if(userProfile){
         <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>
         <Route path="/map" element={<Map userProfile={userProfile}/>}/>
       </Routes>
-      
-
   </div>
  </div>
  );

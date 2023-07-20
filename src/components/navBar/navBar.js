@@ -12,7 +12,7 @@ export default function NavBar() {
   return (
     <nav className="navBar">
       <div className="page" id="nav">
-        Travel App
+        Peace&Pins
         {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>
@@ -26,15 +26,24 @@ export default function NavBar() {
           </Link>
 
           <Link 
-          className="navBarLi" to="/Map">
+          className="navBarLi" 
+          smooth={true}
+          to="/Map">
             Map
           </Link>
+
+          <Link 
+          className="navBarLi" 
+          smooth={true}
+          to="/addPastTrip">
+            Trips
+          </Link>
+
           <Link
             className="navBarLi"
             to="/profile"
             smooth={true}
           >
-            {" "}
             Profile
           </Link>
 

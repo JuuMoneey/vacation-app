@@ -8,14 +8,20 @@ body {
     background-color: whitesmoke;
 }
 
-#googleSignInBtn{
+.tranBox{
+    opacity: 0.6;
+}
+
+#signInBox{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    justify-content: space-around;
     /* background-color: #f0f0f0; */
-    background-color: gray;
-    color: rgb(202, 226, 247);
+    position: relative;
+    background-color: whitesmoke;
+    color: rgb(89, 152, 208);
     width: 45%;
     height: 450px;
     border-radius: 8px;
@@ -23,3 +29,12 @@ body {
     margin: 0 auto;
     margin-top: 100px;
  }
+
+ .signInVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
