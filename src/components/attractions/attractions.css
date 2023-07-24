@@ -17,7 +17,7 @@
   label {
     margin-right: 10px;
   }
-  
+   
   button {
     margin-top: 10px;
   }
@@ -27,16 +27,15 @@
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
   }
   
   .hotel-card img {
     width: 70%;
     height: 70%;
-  }
-  .weather-container {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
   }
   
   .destinations {
@@ -46,15 +45,21 @@
     margin-top: 20px;
   }
   
-  .destination {
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  .destination-card {
     padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
   }
   
-  .destination img {
-    width: 100%;
+  .destinationCard img {
+    max-width: 100%;
     height: auto;
+    display: block;
+    margin: 10px auto;
   }
   
   .destination-details {
@@ -69,3 +74,18 @@
     margin-top: 10px;
   }
   
+  .weather-container {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+
+  .weatherBox{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+  }

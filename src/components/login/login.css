@@ -18,11 +18,10 @@ body {
     justify-content: center;
     flex-direction: column;
     justify-content: space-around;
-    /* background-color: #f0f0f0; */
     position: relative;
     background-color: whitesmoke;
-    color: rgb(89, 152, 208);
-    width: 45%;
+    color: rgb(44, 78, 109);
+    width: 450px;
     height: 450px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

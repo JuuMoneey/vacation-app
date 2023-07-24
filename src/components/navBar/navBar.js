@@ -5,14 +5,13 @@ import Logout from "../Logout/Logout";
 // import Logo from './Logo.png'
 
 
-export default function NavBar() {
-  const [userProfile, setUserProfile] = useState(null)
+export default function NavBar(props) {
 
 
   return (
     <nav className="navBar">
       <div className="page" id="nav">
-        Peace&Pins
+        Peace&Pins : "Pin Your Peaceful Moments Across the Globe."
         {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>
@@ -47,7 +46,7 @@ export default function NavBar() {
             Profile
           </Link>
 
-          <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
+          <Logout userProfile={props.userProfile} setUserProfile={props.setUserProfile}/>
         </ul>
       </div>
     </nav>

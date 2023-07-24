@@ -37,7 +37,7 @@ function App() {
 if(userProfile){
   return (
   <div className="Vacation-App">
-  <NavBar/>
+  <NavBar userProfile={userProfile} setUserProfile={setUserProfile}/>
   <div className='container'>
       <Routes>
         <Route path="/" element={<Home userProfile={userProfile} />} />
@@ -45,7 +45,7 @@ if(userProfile){
         <Route path="/locations/:id" element={<Attractions />} />
         <Route path="/attractions" element={<Attractions />} />
         <Route path="/addPastTrip" element={<AddPastTrip userProfile={userProfile}/>} />
-        <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>
+        <Route path="/profile" element={<Profile userProfile={userProfile} setUserProfile={setUserProfile}/>}/>
         <Route path="/map" element={<Map userProfile={userProfile}/>}/>
       </Routes>
   </div>

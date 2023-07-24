@@ -22,20 +22,8 @@ export default function Login(props) {
     setUserId(e.target.value);
   };
 
-  // const updateName = (e) => {
-  //   setUserName(e.target.value)
-  // }
-
-  // const updateEmail = (e) => {
-  //   setUserEmail(e.target.value)
-  // }
-
-  // const updateUserPhoto = (e) => {
-  //   setUserPhoto(e.target.value)
-  // }
-
   console.log(props.userProfile);
-
+  
   const onSubmit = (e) => {
     e.preventDefault();
     const userObj = {
@@ -93,7 +81,7 @@ export default function Login(props) {
         </div>
         <div className="tranBox">
         <div id="signInBox">
-          <h1>Welcome To Peace&Pins</h1>
+          <h1>Peace&Pins</h1>
         <div className="googleBtn" id="login">
         <GoogleLogin
           clientId={clientId}

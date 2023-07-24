@@ -119,7 +119,7 @@ const Attractions = () => {
 
 <div className="destinations">
   {destinations.map((destination, index) => (
-    <div key={index} className="destination">
+    <div key={index} className="destinationCard">
       <p>View attractions of {destination.name}</p>
       <p>ID: {destination.id}</p>
       <img src={destination.photo} alt="destination" />
@@ -158,7 +158,7 @@ const Attractions = () => {
       <div className="weather-container">
         <h4>Weather</h4>
         {weather && (
-          <div>
+          <div className='weatherBox'>
             <p>Name: {weather.name}</p>
             <p>Temperature: {weather.main.temp}</p>
             <p>Weather main: {weather.weather[0].main}</p>
@@ -172,5 +172,5 @@ const Attractions = () => {
     </div>
   );
 };
-
+   
 export default Attractions;
