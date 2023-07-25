@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { MdOutlineTravelExplore } from "react-icons/md";
 import "./NavBar.css";
 
 export default function NavBar() {
@@ -7,6 +8,7 @@ export default function NavBar() {
   return (
     <nav className="navBar">
       <div className="page" id="nav">
+      <MdOutlineTravelExplore className="icon" />
         Travel App
       </div>
       <div>

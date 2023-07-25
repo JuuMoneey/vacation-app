@@ -6,7 +6,7 @@ import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi'
 import Login from '../Login/Login';
 import Video from '../../Video/Afterimage.mp4'
-
+import Images from '../../Images/bali.jpg'
 
 const AfterLoginPage = ({ userProfile}) => {
    const [savedTrips, setSavedTrips] = useState([]);
@@ -47,7 +47,7 @@ const AfterLoginPage = ({ userProfile}) => {
       </div>
       <div className="afterlogin-cardDiv">
         <div className="destinationInput">
-          <label htmlFor="city">Search your destination:</label>
+          <label htmlFor="city">Search your past trips:</label>
           <div className="input flex">
             <input type="text" placeholder="Enter here..." />
             <GrLocation className="icon" />
@@ -59,28 +59,17 @@ const AfterLoginPage = ({ userProfile}) => {
             <input type="date" />
           </div>
         </div>
-        <div className="priceInput">
-          <div className="label_total.flex">
-            <label htmlFor="price">Max price</label>
-            <h3 className="total">$5000</h3>
-          </div>
-          <div className="input flex">
-            <input type='range' max="5000" min="1000" />
-          </div>
-        </div>
-        <div className="searchOptions flex">
-          <HiFilter className='icon' />
-          <span>More filters</span>
-        </div>
-      </div>
-    </div>
       <section className="savedTrips section">
         <h2>Saved Trips</h2>
         {savedTrips.map(trip => (
           <div key={trip.id} className="tripCard">
             <h3>{trip.name}</h3>
             <p>Date: {trip.date}</p>
-          </div>
+            <div className="imageDiv">
+                <img src={Images} alt={trip.name} />
+              </div>
+            </div>
+      
         ))}
         <div className="DropdownMenu">
           <select
@@ -94,6 +83,9 @@ const AfterLoginPage = ({ userProfile}) => {
           </select>
         </div>
       </section>
+        
+      </div>
+    </div>
   </div>
 );
 };
