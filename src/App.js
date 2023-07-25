@@ -14,7 +14,8 @@ import Logout from './components/Logout/Logout';
 import Attractions from './components/Attractions/Attractions';
 // import { Link } from 'react-scroll';
 import Video from './Video/Afterimage.mp4'
-import AddPastTrip from './components/AddPastTrip/AddPastTrip';
+import AddTrip from './components/AddTrip/AddTrip';
+import Map from './components/Map/Map'
 
 
 const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleusercontent.com';
@@ -22,7 +23,7 @@ const clientId = '334215639628-vu09cfq9ob860n6hj48vosfsdl545reo.apps.googleuserc
 function App() {
   const [userProfile, setUserProfile] = useState(null)
   const [user, setUser] = useState(null)
-
+  console.log(userProfile)
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -45,8 +46,9 @@ if(userProfile){
         <Route path="/locations" element={<Locations />} />
         <Route path="/locations/:id" element={<Attractions />} />
         <Route path="/attractions" element={<Attractions />} />
-        <Route path="/addPastTrip" element={<AddPastTrip userProfile={userProfile}/>} />
+        <Route path="/addTrip" element={<AddTrip userProfile={userProfile}/>} />
         <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>
+        <Route path="/map" element={<Map userProfile={userProfile}/>}/>
       </Routes>
       
 

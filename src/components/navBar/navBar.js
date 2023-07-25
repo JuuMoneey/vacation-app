@@ -1,15 +1,21 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineTravelExplore } from "react-icons/md";
+import { useState } from "react";
 import "./NavBar.css";
+import Logout from "../Logout/Logout";
+// import Logo from './Logo.png'
+
 
 export default function NavBar() {
+  const [userProfile, setUserProfile] = useState(null)
+
 
   return (
     <nav className="navBar">
       <div className="page" id="nav">
       <MdOutlineTravelExplore className="icon" />
         Travel App
+        {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>
         <ul>
@@ -20,15 +26,10 @@ export default function NavBar() {
           >
             Home
           </Link>
-          <Link className="navBarLi" to="/map">
+
+          <Link 
+          className="navBarLi" to="/Map">
             Map
-          </Link>
-          <Link
-            className="navBarLi"
-            to="/attractions"
-            smooth={true}
-          >
-            Attractions
           </Link>
           <Link
             className="navBarLi"
@@ -38,13 +39,8 @@ export default function NavBar() {
             {" "}
             Profile
           </Link>
-          <Link
-            className="navBarLi"
-            to="/logout"
-            smooth={true}
-          >
-            Logout
-          </Link>
+
+          <Logout userProfile={userProfile} setUserProfile={setUserProfile}/>
         </ul>
       </div>
     </nav>

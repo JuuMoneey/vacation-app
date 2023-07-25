@@ -19,8 +19,6 @@ function Home({userProfile}){
       <div className="home-page">
         {/* <h1 className="home-page-title">Travel App</h1> */}
         <AfterLoginPage userProfile={userProfile}/>
-        <button className="home-page-button">Travel Log</button>
-        <Link to="/locations" className="home-page-button">Discover</Link>
       </div>
       <Map />
     </div>
