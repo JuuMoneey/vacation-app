@@ -28,21 +28,24 @@ const Attractions = () => {
     }
   };
 
-  const handleTypeChange = (event) => {
-    setType(event.target.value);
-  };
+  // const handleTypeChange = (event) => {
+  //   setType(e.target.value);
+  //   console.log('Selected type:', event.target.value)
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleTypeChange = async (event) => {
+    setType(event.target.value);
+    event.preventDefault();
 
     const options = {
       method: 'GET',
-      url: `https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`,
+      url: `https://travel-advisor.p.rapidapi.com/${event.target.value}/list-by-latlng`,
       params: {
         latitude: latitude,
         longitude: longitude,
         lang: 'en_US',
         limit: '5',
+        min_rating: '3.3'
       },
       headers: {
         'X-RapidAPI-Key': apiKey,
@@ -102,18 +105,17 @@ const Attractions = () => {
     <div className="attractions-container">
       <h3>Browse through hotels,resturants and attractions</h3>
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-row">
+      {/* <form onSubmit={handleSubmit}> */}
+                 <div className="form-row">
             <label htmlFor="type">Select Hotel,Restaurants or attractions:</label>
-            <select id="type" value={type} onChange={handleTypeChange}>
+            <select id="type" value={type} onChange={handleTypeChange} >
               <option value="">Select a type</option>
               <option value="restaurants">Restaurants</option>
               <option value="hotels">Hotels</option>
               <option value="attractions">Attractions</option>
             </select>
           </div>
-          <button type="submit">Fetch Data</button>
-        </form>
+        {/* </form> */}
       </div>
       <div>
 

@@ -14,7 +14,7 @@ import Logout from './components/Logout/Logout';
 import Attractions from './components/Attractions/Attractions';
 // import { Link } from 'react-scroll';
 import Video from './Video/Afterimage.mp4'
-import AddPastTrip from './components/AddPastTrip/AddPastTrip';
+import AddTrip from './components/AddTrip/AddTrip';
 import Map from './components/Map/Map'
 
 
@@ -46,7 +46,7 @@ if(userProfile){
         <Route path="/locations" element={<Locations />} />
         <Route path="/locations/:id" element={<Attractions />} />
         <Route path="/attractions" element={<Attractions />} />
-        <Route path="/addPastTrip" element={<AddPastTrip userProfile={userProfile}/>} />
+        <Route path="/addTrip" element={<AddTrip userProfile={userProfile}/>} />
         <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>
         <Route path="/map" element={<Map userProfile={userProfile}/>}/>
       </Routes>
