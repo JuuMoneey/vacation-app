@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import './AddTrip.css';
+import SavedTrips from '../SavedTrips/SavedTrips';
 
 const AddTrip = ({ userProfile}) => {
   const [tripName, setTripName] = useState('');
@@ -17,20 +18,11 @@ const AddTrip = ({ userProfile}) => {
       .then(res => {
         setDestinations(res)
       })
-      fetch(`http://localhost:3030/getTripsbyuserid/${userProfile.googleId}`)
-      .then((res) => res.json())
-      .then(res => {
-        setSavedTrips(res)
-        console.log(res)
-        console.log(userProfile.googleId)
-
-      })
-    }, [refreshData]); 
+    }, []); 
 
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // useEffect()
         if (!destinationId) {
           alert('Destination required')
          return
@@ -126,20 +118,8 @@ const AddTrip = ({ userProfile}) => {
             <button  className='button' type="submit">Submit</button>
       </form>
       </div>
-      <div className='addTripPage'>
-        <h3>Saved trips </h3>
-      <div className='singleTrip-container'>
-
-     {tripsArray.map((Trip) => (
-          
-        <div className='singleTrip-box'>
-        <h4>{Trip.tripName}</h4>
-       <p>Date:{Trip.date}</p>
-       <p>Attractions planned for this trip:{Trip.attractions}</p>
-       </div>
-      ))}
-      </div>
-      </div>
+      <h3>Saved trips </h3>
+      <SavedTrips userProfile={userProfile} refreshData={refreshData}/>
     </div>
   );
 };

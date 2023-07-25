@@ -16,7 +16,8 @@
   max-width: 400px;
   margin: 0 auto;
   border-radius: 25px;
-  box-shadow: 0 5px 20px -15px rgb(248, 248, 255);
+  border-width: 10cap;
+  box-shadow: 10px 15px 20px -1px rgb(132, 3, 236);
   backdrop-filter: blur(10px);
   color: #000;
 }
@@ -27,14 +28,13 @@
 }
 /* submit button */
 .button {
-  width: 90px;
-  height: 30px;
+  width: 76px;
+  height: 25px;
   background-image: linear-gradient(rgb(214, 202, 254), rgb(158, 129, 254));
   border: none;
   border-radius: 50px;
   color: rgb(255, 255, 255);
   font-weight: 600;
-
   cursor: pointer;
   box-shadow: 1px 3px 0px rgb(139, 113, 255);
   transition-duration: .3s;
