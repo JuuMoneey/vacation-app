@@ -4,8 +4,22 @@
     padding: 20px;
   }
   
-  .form-container {
-    margin-bottom: 20px;
+  .place-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+  }
+
+  .place-card img{
+    height: 350px;
+    width: 300px;
   }
   
   .form-row {
@@ -45,7 +59,7 @@
     margin-top: 20px;
   }
   
-  .destination-card {
+  .destinationCard {
     padding: 10px;
     border: 1px solid #ccc;
     margin: 10px;
@@ -60,18 +74,6 @@
     height: auto;
     display: block;
     margin: 10px auto;
-  }
-  
-  .destination-details {
-    margin-top: 10px;
-  }
-  
-  .destination-details h3 {
-    margin-bottom: 5px;
-  }
-  
-  .destination-details button {
-    margin-top: 10px;
   }
   
   .weather-container {
