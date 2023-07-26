@@ -1,6 +1,20 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, var(--SecondaryColor), var(--PrimaryColor));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(281, 33%, 16%);
+  --textColor: var(--whiteColor);
+  --whiteColorDeam: hsl(240, 4%, 36%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(248, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+}
+
+
 .afterlogin-container {
-  position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
@@ -12,27 +26,19 @@
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-   
-}
-
-.navBar{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
 }
 
 .afterlogin-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgb(47, 106, 127);
+  background: rgb(60, 128, 153);
   opacity: 0.7;
   z-index: 1;
   mix-blend-mode: hard-light;
+
 }
 
 .afterlogin-content {
@@ -43,142 +49,115 @@
   text-align: center;
   color: #fff;
   z-index: 2;
+  margin-top: 40px;
 }
 
-.WelcomeSection {
-  display: flex;
-  align-items: center;
-}
+  .WelcomeSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .UserProfile {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: -20%; */
+  }
 
-.UserProfile {
-  display: flex;
-  align-items: center;
-}
+  .userProfile_Image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
 
-.userProfile_Image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
+  .UserProfile h3 {
+    margin: 0;
+  }
 
-.UserProfile h3 {
-  margin: 0;
-}
+   
 
-.dropdown {
-  position: relative;
-}
+  /* .savedTrips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--greyText);
+    margin-top: 20px;
+  }
+ 
+  
+  .savedTrips h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  } */
 
-.dropdown_trigger {
+ 
+.icon{
+  font-size: 2rem;
   cursor: pointer;
 }
 
-.dropdown_content {
-  display: none;
-  left: 0;
-  padding-top: 0.25rem;
-  position: absolute;
-  top: 100%;
-  background-color: #fff;
-  z-index: 9999;
-}
 
-.dropdown:hover .dropdown_content {
-  display: block;
-}
-
-.afterlogin-cardDiv {
-  position: relative;
-  padding: 2rem 1rem;
-  background: var(--whiteColor);
-  border-radius: 10px;
-  gap: 1rem;
-}
-
-.destinationInput label,
-.dateInput label,
-.priceInput .label_total,
-.searchOptions span {
-  color: gray;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.destinationInput .input,
-.dateInput .input,
-.priceInput .input {
-  height: 40px;
-  padding: 0 1rem;
-  background: var(--inputColor);
-  border-radius: 3rem;
-}
-
-.destinationInput input,
-.dateInput input {
-  background: none;
-  border: none;
+.btn{
+  padding: 6rem 1.5rem;
+  border-radius: none;
   outline: none;
-  width: 100%;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.priceInput .input input[type='range'] {
-  background: blue;
-}
-
-.label_total {
-  justify-content: space-between;
-  align-items: center;
-}
-
-.label_total .total {
-  color: gray;
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-
-.searchOptions {
-  position: absolute;
-  background: var(--gradientColor);
-  width: max-content;
-  bottom: -0.7rem;
-  column-gap: 0.8rem;
-  padding: 5px 1rem;
-  border-radius: 3rem;
-  left: 50%;
-  transform: translate(-50%);
-  justify-content: center;
   cursor: pointer;
+
 }
 
-.searchOptions .icon {
-  font-size: 18px;
+.btn:hover{
+  background: var(--gradientColor);
 }
 
-.savedTrips {
-  padding: 2rem;
+
+
+  */
+
+
+.home {
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
 }
 
-.savedTrips h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 1rem;
+.title {
+  color: var(--whiteColor);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.5rem;
 }
 
-.tripCard {
-  background-color: #fff;
-  border-radius: 10px;
+.subTitle {
+  color: var(--whiteColor);
+  opacity: 0.9;
+  font-size: 15px;
+  font-weight: 300;
   padding: 1rem;
-  margin-bottom: 1rem;
+  max-width: 70%;
+  text-align: center;
+  margin: auto;
 }
 
-.tripCard h3 {
-  font-size: 18px;
-  margin-bottom: 0.5rem;
+
+.btn.btn-primary {
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  padding: 12px 25px;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20%;
 }
 
-.tripCard p {
-  font-size: 14px;
-}
+

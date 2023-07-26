@@ -6,15 +6,16 @@ import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi'
 import Login from '../Login/Login';
 import Video from '../../Video/Afterimage.mp4'
-
+import Images from '../../Images/bali.jpg'
+import SavedTrips from '../SavedTrips/SavedTrips';
 
 const AfterLoginPage = ({ userProfile}) => {
    const [savedTrips, setSavedTrips] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
+
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [userProfile.googleId]);
 
   const fetchData = () => {
 
@@ -26,9 +27,7 @@ const AfterLoginPage = ({ userProfile}) => {
       .catch(error => console.error('Error fetching saved trips:', error));
    };
 
-  const handleOptionChange = option => {
-    setSelectedOption(option);
-  };
+
 
   return (
     <div className="afterlogin-container">
@@ -45,55 +44,35 @@ const AfterLoginPage = ({ userProfile}) => {
           <h3>Welcome, {userProfile.givenName}!</h3>
         </div>
       </div>
-      <div className="afterlogin-cardDiv">
-        <div className="destinationInput">
-          <label htmlFor="city">Search your destination:</label>
-          <div className="input flex">
-            <input type="text" placeholder="Enter here..." />
-            <GrLocation className="icon" />
-          </div>
-        </div>
-        <div className="dateInput">
-          <label htmlFor="date">Select your date</label>
-          <div className="input flex">
-            <input type="date" />
-          </div>
-        </div>
-        <div className="priceInput">
-          <div className="label_total.flex">
-            <label htmlFor="price">Max price</label>
-            <h3 className="total">$5000</h3>
-          </div>
-          <div className="input flex">
-            <input type='range' max="5000" min="1000" />
-          </div>
-        </div>
-        <div className="searchOptions flex">
-          <HiFilter className='icon' />
-          <span>More filters</span>
+      <section className="home">
+      <div className="secContainer container">
+        <div className="homeText">
+          <h1 className="title">Let Your Travel Story Begin Here</h1>
+          <p className="subTitle">Travel to your next destination!</p>
+          <Link to="/map" className="btn btn-primary">Explore Now
+          </Link>
         </div>
       </div>
-    </div>
+    </section>
+      
       <section className="savedTrips section">
-        <h2>Saved Trips</h2>
+        {/* <h2>Saved Trips</h2> */}
         {savedTrips.map(trip => (
           <div key={trip.id} className="tripCard">
             <h3>{trip.name}</h3>
             <p>Date: {trip.date}</p>
-          </div>
+            <div className="imageDiv">
+                <img src={Images} alt={trip.name} />
+              </div>
+            </div>
+      
         ))}
-        <div className="DropdownMenu">
-          <select
-            value={selectedOption}
-            onChange={e => handleOptionChange(e.target.value)}
-          >
-            <option value="">Select</option>
-            <option value="booking">Booking History</option>
-            <option value="past">Past Trips</option>
-            <option value="saved">Saved Trips</option>
-          </select>
-        </div>
+       
+      <SavedTrips userProfile={userProfile} />
       </section>
+        
+      
+    </div>
   </div>
 );
 };

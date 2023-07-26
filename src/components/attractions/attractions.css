@@ -1,11 +1,32 @@
+.attractions{
+  height: 150vh;
+  width: 100vw;
+}
+
 .attractions-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    
   }
-  
-  .form-container {
-    margin-bottom: 20px;
+
+  .place-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  .place-card img{
+    height: 350px;
+    width: 300px;
   }
   
   .form-row {
@@ -17,26 +38,32 @@
   label {
     margin-right: 10px;
   }
-  
+   
   button {
     margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #77AEEE;
+    color: white;
+    border: none;
+    border-radius: 10px;
   }
   
   .hotel-card {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 25px;
+    padding: 20px;
     margin-bottom: 10px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .hotel-card img {
     width: 70%;
     height: 70%;
-  }
-  .weather-container {
-    margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
   }
   
   .destinations {
@@ -46,19 +73,28 @@
     margin-top: 20px;
   }
   
-  .destination {
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  .destinationCard {
     padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .destination img {
-    width: 100%;
+  .destinationCard img {
+    max-width: 100%;
     height: auto;
+    display: block;
+    margin: 10px auto;
   }
   
-  .destination-details {
-    margin-top: 10px;
+  .weather-container {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+    font-size: 25px;
   }
   
   .destination-details h3 {
@@ -86,4 +122,14 @@
   
   .modal h2 {
     margin: 15px 0;
+  }
+
+  .weatherBox{
+    padding: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
   }

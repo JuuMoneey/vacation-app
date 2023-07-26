@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const Weather = ({latitude,longitude,setLatitude,setLongitude}) => {
     const [weather, setWeather] = useState(null);  
     // const [latitude, setLatitude] = useState('');
@@ -22,7 +23,7 @@ const Weather = ({latitude,longitude,setLatitude,setLongitude}) => {
   
 
   return (
-    <div>
+    <div className='attractions'>
        <div>
         <div>
         {weather && (

@@ -1,70 +1,41 @@
+/* .profilePg{
+ height: 100vh;
+ width: 100vw;
+} */
+
+.profileBox{
+  opacity: 0.85;
+}
+
+.profile p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
 .profile {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .profileDetails {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .UserProfile_Picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
-  }
-  
-  .profileHistory {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .pastTrips,
-  .futureTrips {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .pastTrips,
-  .futureTrips h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .tripCard {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-  
-  .tripCard p {
-    margin: 5px 0;
-  }
-  
-  .profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    height: 600px;
-    width: 500px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
+  height: 600px;
+  width: 500px;
   }
  
+  .profile-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
   .userProfile_Picture {
       width: 250px;
       height: 250px;
@@ -82,35 +53,4 @@
         justify-content: space-between;
         margin-bottom: 20px;
       }
-
-
-      .profile {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        height: 600px;
-        width: 500px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-     
-      .userProfile_Picture {
-          width: 250px;
-          height: 250px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin-right: 20px;
-        }
       
-        .profileDetails {
-            font-size: 18px;
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-          }

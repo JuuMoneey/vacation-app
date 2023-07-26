@@ -8,18 +8,32 @@ body {
     background-color: whitesmoke;
 }
 
-#googleSignInBtn{
+.tranBox{
+    opacity: 0.6;
+}
+
+#signInBox{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* background-color: #f0f0f0; */
-    background-color: gray;
-    color: rgb(202, 226, 247);
-    width: 45%;
+    justify-content: space-around;
+    position: relative;
+    background-color: whitesmoke;
+    color: rgb(44, 78, 109);
+    width: 450px;
     height: 450px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
     margin-top: 100px;
  }
+
+ .signInVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }

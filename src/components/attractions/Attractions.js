@@ -11,8 +11,8 @@ const Attractions = () => {
   const [type, setType] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [weather, setWeather] = useState(null);
-  let { id } = useParams();
-  // console.log("Here is the destination ID!",id)
+  const [isHovered, setIsHovered] = useState(false);
+  let { id } = useParams(); 
   const apiKey = '7adcac2dc9msh088284d4d774577p1c3f3cjsnef3afb93ada7';
   const WeatherAPIkey = 'c2b759dfa462e91ac01969de25a25a29';
   const [tripInfo, setTripInfo] = useState([]);
@@ -75,34 +75,32 @@ const Attractions = () => {
     closeModal();
   }
 
+  
   const fetchData = async (options, setData, storageKey) => {
     try {
       const response = await axios.request(options);
       const data = response.data.data;
       setData(data);
 
-      // Store the data in local storage
       localStorage.setItem(storageKey, JSON.stringify(data));
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleTypeChange = (event) => {
+  const handleTypeChange = async (event) => {
     setType(event.target.value);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    event.preventDefault();
 
     const options = {
       method: 'GET',
-      url: `https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`,
+      url: `https://travel-advisor.p.rapidapi.com/${event.target.value}/list-by-latlng`,
       params: {
         latitude: latitude,
         longitude: longitude,
         lang: 'en_US',
         limit: '5',
+        min_rating: '3.3'
       },
       headers: {
         'X-RapidAPI-Key': apiKey,
@@ -158,41 +156,46 @@ const Attractions = () => {
     }
   }, []);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
+    <div className='attractions'>
+
     <div className="attractions-container">
       <h3>Browse through hotels,resturants and attractions</h3>
       <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-row">
+                 <div className="form-row">
             <label htmlFor="type">Select Hotel,Restaurants or attractions:</label>
-            <select id="type" value={type} onChange={handleTypeChange}>
+            <select id="type" value={type} onChange={handleTypeChange} >
               <option value="">Select a type</option>
               <option value="restaurants">Restaurants</option>
               <option value="hotels">Hotels</option>
               <option value="attractions">Attractions</option>
             </select>
           </div>
-          <button type="submit">Fetch Data</button>
-        </form>
       </div>
-      <div>
+      </div>
 
-        <div className="destinations">
-          {destinations.map((destination, index) => (
-            <div key={index} className="destination">
-              <p>View attractions of {destination.name}</p>
-              <p>ID: {destination.id}</p>
-              <img src={destination.photo} alt="destination" />
-              <div className="destination-details">
-                <h3>{destination.name}</h3>
-                <p>Country: {destination.country}</p>
-                <p>Longitude: {destination.longitude}</p>
-                <p>Latitude: {destination.latitude}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+<div className="destinations">
+  {destinations.map((destination, index) => (
+    <div key={index} className="destinationCard">
+      <p>View attractions of {destination.name}</p>
+      <p>ID: {destination.id}</p>
+      <img src={destination.photo} alt="destination" />
+      <div className="destination-details">
+        <h3>{destination.name}</h3>
+        <p>Country: {destination.country}</p>
+        <p>Longitude: {destination.longitude}</p>
+        <p>Latitude: {destination.latitude}</p>
       </div>
+      </div>
+  ))}
       <h1>{type} Options</h1>
       {places.map((place) => (
         <div key={place.name} className="place-card">
@@ -203,14 +206,26 @@ const Attractions = () => {
           <p>{place.address}</p>
           <p>{place.rating}</p>
           <p>{place?.phone}</p>
-          <button onClick={() => window.open(place.web_url, '_blank')}>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => window.open(place.web_url, '_blank')}>
             Trip Advisor
           </button>
-          <button onClick={() => window.open(place.website, '_blank')}>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => window.open(place.website, '_blank')}>
             Website
           </button>
           <p>{place.price_level}</p>
-          <button onClick={() => openModal(place)}>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => openModal(place)}>
             Add to your trip
           </button>
         </div>
@@ -228,7 +243,7 @@ const Attractions = () => {
       <div className="weather-container">
         <h4>Weather</h4>
         {weather && (
-          <div>
+          <div className='weatherBox'>
             <p>Name: {weather.name}</p>
             <p>Temperature: {weather.main.temp}</p>
             <p>Weather main: {weather.weather[0].main}</p>
@@ -239,7 +254,8 @@ const Attractions = () => {
         )}
       </div>
     </div>
+    </div>
   );
 };
-
+   
 export default Attractions;
