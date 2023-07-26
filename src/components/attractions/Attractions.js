@@ -10,11 +10,13 @@ const Attractions = () => {
   const [type, setType] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [weather, setWeather] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
   let { id } = useParams(); 
   // console.log("Here is the destination ID!",id)
   const apiKey = '7adcac2dc9msh088284d4d774577p1c3f3cjsnef3afb93ada7';
   const WeatherAPIkey = 'c2b759dfa462e91ac01969de25a25a29';
 
+  
   const fetchData = async (options, setData, storageKey) => {
     try {
       const response = await axios.request(options);
@@ -98,7 +100,17 @@ const Attractions = () => {
     }
   }, []);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
+    <div className='attractions'>
+
     <div className="attractions-container">
       <h3>Browse through hotels,resturants and attractions</h3>
       <div className="form-container">
@@ -112,7 +124,11 @@ const Attractions = () => {
               <option value="attractions">Attractions</option>
             </select>
           </div>
-          <button type="submit">Fetch Data</button>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          type="submit">Fetch Data</button>
         </form>
       </div>
       <div>
@@ -143,14 +159,26 @@ const Attractions = () => {
           <p>{place.address}</p>
           <p>{place.rating}</p>
           <p>{place?.phone}</p>
-          <button onClick={() => window.open(place.web_url, '_blank')}>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => window.open(place.web_url, '_blank')}>
             Trip Advisor
           </button>
-          <button onClick={() => window.open(place.website, '_blank')}>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => window.open(place.website, '_blank')}>
             Website
           </button>
           <p>{place.price_level}</p>
-          <button onClick={() => window.open(place.website, '_blank')}>
+          <button 
+          style={{ cursor: isHovered ? 'pointer' : 'auto' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => window.open(place.website, '_blank')}>
             Add to your trip
           </button>
         </div>
@@ -169,6 +197,7 @@ const Attractions = () => {
         )}
       </div>
    
+    </div>
     </div>
   );
 };

@@ -69,6 +69,7 @@ export default function Login(props) {
   } else {
     return (
       <div>
+        
         <div className="video">
           <video
             className="signInVideo"
@@ -79,6 +80,7 @@ export default function Login(props) {
             type="video/mp4"
           ></video>
         </div>
+
         <div className="tranBox">
         <div id="signInBox">
           <h1>Peace&Pins</h1>

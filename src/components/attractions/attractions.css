@@ -1,20 +1,29 @@
+.attractions{
+  /* background-image: url(/vacation-app/src/Video-3/Video-3.mp4); */
+  /* background-color: gray; */
+  height: 150vh;
+  width: 100vw;
+}
+
 .attractions-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    
   }
-  
+
   .place-card {
     border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 20px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
-    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
   }
 
   .place-card img{
@@ -34,17 +43,24 @@
    
   button {
     margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #77AEEE;
+    color: white;
+    border: none;
+    border-radius: 10px;
   }
   
   .hotel-card {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 25px;
+    padding: 20px;
     margin-bottom: 10px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 25px;
-    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .hotel-card img {
@@ -61,12 +77,12 @@
   
   .destinationCard {
     padding: 10px;
-    border: 1px solid #ccc;
     margin: 10px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
     border-radius: 25px;
-    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .destinationCard img {
@@ -80,14 +96,15 @@
     margin-top: 20px;
     border-top: 1px solid #ccc;
     padding-top: 20px;
+    font-size: 25px;
   }
 
   .weatherBox{
-    border: 1px solid #ccc;
     padding: 10px;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     border-radius: 25px;
-    box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
   }
