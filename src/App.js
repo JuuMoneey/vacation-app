@@ -36,7 +36,7 @@ function App() {
 
 if(userProfile){
   return (
-  <div className="Vacation-App">
+  <div className="App">
   <NavBar userProfile={userProfile} setUserProfile={setUserProfile}/>
   <div className='container'>
       <Routes>
