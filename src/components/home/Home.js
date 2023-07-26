@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css';
 import Logo from './Logo.png'
 import { Link } from 'react-router-dom';
-import Map from '../Map/Map'
+// import Map from '../Map/Map'
 import AfterLoginPage from '../AfterLoginPage/AfterLoginPage';
 
 function Home({userProfile}){
@@ -20,7 +20,7 @@ function Home({userProfile}){
         {/* <h1 className="home-page-title">Travel App</h1> */}
         <AfterLoginPage userProfile={userProfile}/>
       </div>
-      <Map />
+      {/* <Map /> */}
     </div>
   );
 }
