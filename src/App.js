@@ -42,7 +42,7 @@ if(userProfile){
       <Routes>
         <Route path="/" element={<Home userProfile={userProfile} />} />
         <Route path="/locations" element={<Locations />} />
-        <Route path="/locations/:id" element={<Attractions />} />
+        <Route path="/locations/:id" element={<Attractions userProfile={userProfile}  />} />
         <Route path="/attractions" element={<Attractions />} />
         <Route path="/addTrip" element={<AddTrip userProfile={userProfile}/>} />
         <Route path="/profile" element={<Profile userProfile={userProfile}/>}/>

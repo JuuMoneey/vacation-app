@@ -12,10 +12,7 @@ export default function NavBar(props) {
   return (
     <nav className="navBar">
       <div className="page" id="nav">
-<<<<<<< HEAD
-=======
         Peace&Pins : "Pin Your Peaceful Moments Across the Globe."
->>>>>>> main
         {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>
@@ -38,7 +35,7 @@ export default function NavBar(props) {
           <Link 
           className="navBarLi" 
           smooth={true}
-          to="/addPastTrip">
+          to="/addTrip">
             Trips
           </Link>
 
