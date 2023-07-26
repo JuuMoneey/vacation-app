@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { MdOutlineTravelExplore } from "react-icons/md";
 import { useState } from "react";
 import "./NavBar.css";
 import Logout from "../Logout/Logout";
