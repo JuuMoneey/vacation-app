@@ -19,7 +19,6 @@ function Map() {
       fetch("http://localhost:3030/destinations")
         .then(response => response.json())
         .then(data => {
-          console.log("Fetched data:", data);
           const countryMarkers = data
             .filter(marker => marker.country === geo.properties.name)
             .map(marker => ({
@@ -27,7 +26,6 @@ function Map() {
               country: marker.country,
               coordinates: [marker.longitude, marker.latitude],
             }));
-          console.log("Filtered markers:", countryMarkers);
           setMarkers(countryMarkers);
         })
         .catch(error => {
@@ -60,8 +58,6 @@ function Map() {
   const handleCountryClick = (country) => {
     navigate(`/locations?search=${country}`);
   };
-
-  console.log("Markers:", markers);
 
   return (
     <div className="map-container">

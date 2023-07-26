@@ -12,7 +12,6 @@ export default function NavBar() {
   return (
     <nav className="navBar">
       <div className="page" id="nav">
-        Travel App
         {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>

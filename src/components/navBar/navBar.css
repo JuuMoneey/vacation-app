@@ -5,13 +5,14 @@
     width: 100%;
     overflow: hidden;
     
-    color: 8C8C8C;
+    color: #8C8C8C;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
   
     box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px); 
     margin-bottom: 20px;
     height: 90px;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Locations.css';
+import Video from '../../Video/Afterimage.mp4'
 
 function Locations() {
   const location = useLocation();
@@ -8,10 +9,8 @@ function Locations() {
   const searchTermFromURL = searchParams.get('search') || '';
 
   const [locations, setLocations] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(searchTermFromURL);
-  const [selectedCountry, setSelectedCountry] = useState('');
-
-  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState(searchTermFromURL);
 
   useEffect(() => {
     fetch('http://localhost:3030/destinations')
@@ -25,7 +24,13 @@ function Locations() {
   };
 
   const handleCountryFilter = event => {
-    setSelectedCountry(event.target.value);
+    const selectedCountry = event.target.value;
+    setSelectedCountry(selectedCountry);
+    setSearchTerm('');
+    const navigateUrl = selectedCountry
+      ? `/locations?search=${encodeURIComponent(selectedCountry)}`
+      : '/locations';
+    window.history.pushState(null, null, navigateUrl);
   };
 
   const filteredLocations = locations.filter(location => {
@@ -39,10 +44,12 @@ function Locations() {
     return searchMatch && countryMatch;
   });
 
-  const countries = [...new Set(locations.map(location => location.country))];
+  let countries = [...new Set(locations.map(location => location.country))];
+  countries.sort();
 
   return (
     <div>
+      <video className="afterlogin-video" src={Video} muted autoPlay loop type="video/mp4"></video>
       <div className="search-bar">
         <input
           type="text"
@@ -53,7 +60,9 @@ function Locations() {
         <select value={selectedCountry} onChange={handleCountryFilter}>
           <option value="">All Countries</option>
           {countries.map((country, index) => (
-            <option key={index} value={country}>{country}</option>
+            <option key={index} value={country}>
+              {country}
+            </option>
           ))}
         </select>
       </div>

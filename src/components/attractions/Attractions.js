@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
+import Modal from 'react-modal';
 import './Attractions.css';
 
 const Attractions = () => {
@@ -10,10 +11,69 @@ const Attractions = () => {
   const [type, setType] = useState('');
   const [destinations, setDestinations] = useState([]);
   const [weather, setWeather] = useState(null);
-  let { id } = useParams(); 
+  let { id } = useParams();
   // console.log("Here is the destination ID!",id)
   const apiKey = '7adcac2dc9msh088284d4d774577p1c3f3cjsnef3afb93ada7';
   const WeatherAPIkey = 'c2b759dfa462e91ac01969de25a25a29';
+  const [tripInfo, setTripInfo] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dropValue, setDropValue] = useState('');
+  const [activeAttraction, setActiveAttraction] = useState({})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3030/getTripsByUserId/googleid2');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setTripInfo(data);
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching getTrips data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const openModal = (place) => {
+    setIsModalOpen(true);
+    setActiveAttraction(place)
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setDropValue(e.target.value);
+    console.log(e.target.value)
+  }
+
+  const submitAttraction = (e) => {
+    const newAttraction = {
+      name: activeAttraction.name,
+      destination_id: destinations[0].id,
+      trip_id: dropValue
+    }
+    e.preventDefault();
+    fetch(`http://localhost:3030/trip`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newAttraction),
+    })
+      .then(res => res.json())
+      .then(() => {
+        setActiveAttraction({ name: '', destination_id: '', trip_id: '' });
+      })
+    console.log(activeAttraction.name, dropValue, destinations[0].id)
+    closeModal();
+  }
 
   const fetchData = async (options, setData, storageKey) => {
     try {
@@ -66,12 +126,12 @@ const Attractions = () => {
       .then((res) => res.json())
       .then((data) => {
         setDestinations(data);
-          const { latitude, longitude } = data[0];
-          setLatitude(latitude);
-          setLongitude(longitude);
+        const { latitude, longitude } = data[0];
+        setLatitude(latitude);
+        setLongitude(longitude);
       })
       .catch((error) => console.error('Error fetching destinations:', error));
-  }, [id]); 
+  }, [id]);
 
 
   useEffect(() => {
@@ -117,22 +177,22 @@ const Attractions = () => {
       </div>
       <div>
 
-<div className="destinations">
-  {destinations.map((destination, index) => (
-    <div key={index} className="destination">
-      <p>View attractions of {destination.name}</p>
-      <p>ID: {destination.id}</p>
-      <img src={destination.photo} alt="destination" />
-      <div className="destination-details">
-        <h3>{destination.name}</h3>
-        <p>Country: {destination.country}</p>
-        <p>Longitude: {destination.longitude}</p>
-        <p>Latitude: {destination.latitude}</p>
+        <div className="destinations">
+          {destinations.map((destination, index) => (
+            <div key={index} className="destination">
+              <p>View attractions of {destination.name}</p>
+              <p>ID: {destination.id}</p>
+              <img src={destination.photo} alt="destination" />
+              <div className="destination-details">
+                <h3>{destination.name}</h3>
+                <p>Country: {destination.country}</p>
+                <p>Longitude: {destination.longitude}</p>
+                <p>Latitude: {destination.latitude}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
-</div>
-</div>
       <h1>{type} Options</h1>
       {places.map((place) => (
         <div key={place.name} className="place-card">
@@ -150,11 +210,21 @@ const Attractions = () => {
             Website
           </button>
           <p>{place.price_level}</p>
-          <button onClick={() => window.open(place.website, '_blank')}>
+          <button onClick={() => openModal(place)}>
             Add to your trip
           </button>
         </div>
       ))}
+      <Modal className="modal" ariaHideApp={false} isOpen={isModalOpen} onRequestClose={closeModal}>
+        <h2>Trips</h2>
+        <select onChange={e => handleChange(e)} value={dropValue}>
+          <option defaultValue>Select a trip</option>
+          {tripInfo.map((trip) => (
+            <option key={trip.id} value={trip.id}>{trip.name}</option>
+          ))}
+        </select>
+        <button onClick={submitAttraction}>Submit</button>
+      </Modal>
       <div className="weather-container">
         <h4>Weather</h4>
         {weather && (
@@ -168,7 +238,6 @@ const Attractions = () => {
           </div>
         )}
       </div>
-   
     </div>
   );
 };
