@@ -174,17 +174,6 @@ button {
   margin-top: 20px;
 }
 
-.destinationCard {
-  padding: 10px;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-}
 
 .destinationCard img {
   max-width: 100%;
@@ -221,6 +210,18 @@ button {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 25px;
+}
+
+.destinationCard {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 
 .modal h2 {

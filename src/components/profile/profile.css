@@ -1,5 +1,5 @@
 .profileBox {
-  opacity: 0.75;
+  opacity: 0.9;
   display: flex;
   justify-content: center;
 }
@@ -14,14 +14,18 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 20px;
   border-radius: 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   padding: 20px;
   border-radius: 5px;
   height: 600px;
   width: 500px;
+  box-shadow: 0 5px 20px -15px rgb(138, 153, 237);
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
 }
 
 .profile-video {
