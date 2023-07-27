@@ -13,7 +13,6 @@ export default function NavBar(props) {
     <nav className="navBar">
       <div className="page" id="nav">
         Pinsy : "Pin Your adventures"
-        {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>
         <ul>
