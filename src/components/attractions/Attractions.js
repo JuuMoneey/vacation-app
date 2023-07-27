@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Modal from 'react-modal';
 import './Attractions.css';
+import Video from "../../Video/Afterimage.mp4";
 
 const Attractions = ({userProfile}) => {
   const [places, setPlaces] = useState([]);
@@ -165,22 +166,21 @@ const Attractions = ({userProfile}) => {
   };
 
   return (
-    <div className='attractions'>
+  <div className='attractions'>
+    <div className="traction-video">
+          <video
+            className="traction-video"
+            src={Video}
+            muted
+            autoPlay
+            loop
+            type="video/mp4"
+          ></video>
+        </div>
 
     <div className="attractions-container">
       <h3>Browse through hotels,resturants and attractions</h3>
-      <div className="form-container">
-                 <div className="form-row">
-            <label htmlFor="type">Select Hotel,Restaurants or attractions:</label>
-            <select id="type" value={type} onChange={handleTypeChange} >
-              <option value="">Select a type</option>
-              <option value="restaurants">Restaurants</option>
-              <option value="hotels">Hotels</option>
-              <option value="attractions">Attractions</option>
-            </select>
-          </div>
-      </div>
-      </div>
+      <div className='dest'>
 
 <div className="destinations">
   {destinations.map((destination, index) => (
@@ -193,9 +193,42 @@ const Attractions = ({userProfile}) => {
         <p>Longitude: {destination.longitude}</p>
         <p>Latitude: {destination.latitude}</p>
       </div>
+
       </div>
   ))}
+  </div>
+      <div className="weather-container">
+        <h4>Weather</h4>
+        {weather && (
+          <div className='weatherBox'>
+            <p>Name: {weather.name}</p>
+            <p>Temperature: {weather.main.temp}</p>
+            <p>Weather main: {weather.weather[0].main}</p>
+            <p>Weather Description: {weather.weather[0].description}</p>
+            <p>Max Temperature: {weather.main.temp_max}</p>
+            <p>Min Temperature: {weather.main.temp_min}</p>
+          </div>
+        )}
+      </div>
+      </div>
+
+
+      
+      <div className="form-container">
+                 <div className="form-row">
+            <label htmlFor="type">Select Hotel,Restaurants or attractions:</label>
+            <select id="type" value={type} onChange={handleTypeChange} >
+              <option value="">Select a type</option>
+              <option value="restaurants">Restaurants</option>
+              <option value="hotels">Hotels</option>
+              <option value="attractions">Attractions</option>
+            </select>
+          </div>
+      </div>
       <h1>{type} Options</h1>
+
+      <div className='cards'>
+      <div className='options'>
       {places.map((place) => (
         <div key={place.name} className="place-card">
           <h4>{place.name}</h4>
@@ -229,30 +262,20 @@ const Attractions = ({userProfile}) => {
           </button>
         </div>
       ))}
+      </div>
       <Modal className="modal" ariaHideApp={false} isOpen={isModalOpen} onRequestClose={closeModal}>
         <h2>Trips</h2>
         <select onChange={e => handleChange(e)} value={dropValue}>
           <option defaultValue>Select a trip</option>
           {tripInfo.map((trip) => (
             <option key={trip.id} value={trip.id}>{trip.name}</option>
-          ))}
+            ))}
         </select>
         <button onClick={submitAttraction}>Submit</button>
       </Modal>
-      <div className="weather-container">
-        <h4>Weather</h4>
-        {weather && (
-          <div className='weatherBox'>
-            <p>Name: {weather.name}</p>
-            <p>Temperature: {weather.main.temp}</p>
-            <p>Weather main: {weather.weather[0].main}</p>
-            <p>Weather Description: {weather.weather[0].description}</p>
-            <p>Max Temperature: {weather.main.temp_max}</p>
-            <p>Min Temperature: {weather.main.temp_min}</p>
-          </div>
-        )}
-      </div>
     </div>
+    </div>
+
     </div>
   );
 };
