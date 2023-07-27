@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import './Attractions.css';
 import Video from "../../Video/Afterimage.mp4";
 
-const Attractions = () => {
+const Attractions = ({userProfile}) => {
   const [places, setPlaces] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
@@ -24,7 +24,7 @@ const Attractions = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3030/getTripsByUserId/googleid2');
+        const response = await fetch(`http://localhost:3030/getTripsByUserId/${userProfile.googleId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -58,7 +58,7 @@ const Attractions = () => {
     const newAttraction = {
       name: activeAttraction.name,
       destination_id: destinations[0].id,
-      trip_id: dropValue
+      trip_id: parseInt(dropValue)
     }
     e.preventDefault();
     fetch(`http://localhost:3030/trip`, {

@@ -35,7 +35,7 @@ export default function NavBar(props) {
           <Link 
           className="navBarLi" 
           smooth={true}
-          to="/addPastTrip">
+          to="/addTrip">
             Trips
           </Link>
 

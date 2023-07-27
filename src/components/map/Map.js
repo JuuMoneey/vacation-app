@@ -39,21 +39,21 @@ function Map() {
     setMarkers([]);
   };
 
-  useEffect(() => {
-    fetch("http://localhost:3030/destinations")
-      .then(response => response.json())
-      .then(data => {
-        console.log("Fetched data:", data);
-        setMarkers(data.map(marker => ({
-          name: marker.name,
-          country: marker.country,
-          coordinates: [marker.longitude, marker.latitude],
-        })));
-      })
-      .catch(error => {
-        console.error("Error fetching marker data:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3030/destinations")
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log("Fetched data:", data);
+  //       setMarkers(data.map(marker => ({
+  //         name: marker.name,
+  //         country: marker.country,
+  //         coordinates: [marker.longitude, marker.latitude],
+  //       })));
+  //     })
+  //     .catch(error => {
+  //       console.error("Error fetching marker data:", error);
+  //     });
+  // }, []);
 
   const handleCountryClick = (country) => {
     navigate(`/locations?search=${country}`);

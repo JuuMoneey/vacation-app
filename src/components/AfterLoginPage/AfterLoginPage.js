@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './AfterLoginPage.css';
 import Logo from './Logo.png';
 import { Link } from 'react-router-dom';
-import { GrLocation } from 'react-icons/gr';
 import { HiFilter } from 'react-icons/hi'
 import Login from '../Login/Login';
 import Video from '../../Video/Afterimage.mp4'
-import Images from '../../Images/bali.jpg'
 import SavedTrips from '../SavedTrips/SavedTrips';
 
 const AfterLoginPage = ({ userProfile}) => {
@@ -61,9 +59,6 @@ const AfterLoginPage = ({ userProfile}) => {
           <div key={trip.id} className="tripCard">
             <h3>{trip.name}</h3>
             <p>Date: {trip.date}</p>
-            <div className="imageDiv">
-                <img src={Images} alt={trip.name} />
-              </div>
             </div>
       
         ))}
