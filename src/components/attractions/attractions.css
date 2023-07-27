@@ -1,17 +1,36 @@
 .attractions{
-    /* background-image: url(/vacation-app/src/Video-3/Video-3.mp4); */
-    /* background-color: gray; */
-    height: 150vh;
-    width: 100vw;
+   display: flex;
+   flex-direction: column;
   }
   
+  .dest{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; 
+  }
+
   .attractions-container {
-      max-width: 800px;
-      margin: 0 auto;
+      display: grid;
+      /* gap: 20px; */
       padding: 20px;
-      
     }
-  
+
+    .cards{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .options{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      width: 70vw;
+      /* padding: 20px; */
+    }
+
     .place-card {
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -19,8 +38,9 @@
       margin-bottom: 10px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
+      backdrop-filter: blur(10px);
       border-radius: 25px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       background-color: #fff;
@@ -83,10 +103,11 @@
       background-color: #fff;
       border-radius: 25px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 60vw;
     }
     
     .destinationCard img {
-      max-width: 100%;
+      object-fit: cover;
       height: auto;
       display: block;
       margin: 10px auto;
@@ -97,6 +118,8 @@
       border-top: 1px solid #ccc;
       padding-top: 20px;
       font-size: 25px;
+      flex: 1; 
+      max-width: 50%; 
     }
   
   .form-row {
@@ -165,6 +188,7 @@
     border-top: 1px solid #ccc;
     padding-top: 20px;
     font-size: 25px;
+    /* width: 120%; */
   }
   
   .destination-details h3 {
@@ -196,10 +220,18 @@
 
   .weatherBox{
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+   width: 650px; 
   }
+
+  .destinationCard img,
+.place-card img {
+  width: 200px; 
+  height: 150px; 
+  object-fit: cover;
+}

@@ -6,7 +6,7 @@ const SavedTrips = (props) => {
 
 
     useEffect(() => {
-          fetch(`http://localhost:3030/getTripsbyuserid/${userProfile.googleId}`)
+          fetch(`http://localhost:3030/getTrips/${userProfile.googleId}`)
           .then((res) => res.json())
           .then(res => {
             setSavedTrips(res)

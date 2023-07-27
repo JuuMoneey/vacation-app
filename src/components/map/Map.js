@@ -60,6 +60,7 @@ function Map() {
   };
 
   return (
+    
     <div className="map-container">
       <ComposableMap>
       <ZoomableGroup center={[0, 0]} zoom={1}>
