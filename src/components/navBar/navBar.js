@@ -12,7 +12,7 @@ export default function NavBar(props) {
   return (
     <nav className="navBar">
       <div className="page" id="nav">
-        Peace&Pins : "Pin Your Peaceful Moments Across the Globe."
+        Pinsy : "Pin Your adventures"
         {/* <img className="logo" src={Logo} alt="Logo" /> */}
       </div>
       <div>
