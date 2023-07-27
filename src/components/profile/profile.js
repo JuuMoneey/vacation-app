@@ -1,6 +1,6 @@
 import "./Profile.css";
 import Logout from "../Logout/Logout";
-import Video3 from "../../Video-3/Video-3.mp4";
+import Video4 from "../../Video-4/Video-4.mp4";
 
 export default function Profile(props) {
 
@@ -10,7 +10,7 @@ export default function Profile(props) {
     <div className="profile-video" >
       <video 
       className="profile-video"
-      src={Video3}
+      src={Video4}
       muted 
       autoPlay 
       loop 

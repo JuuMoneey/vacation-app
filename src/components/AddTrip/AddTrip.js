@@ -77,7 +77,7 @@ const AddTrip = ({ userProfile}) => {
 
   const tripsArray =Object.values(obj)
   return (
-    <div className=''>
+    <div className='Addtrip' style={{background: '#3399ff'}}>
  <div className="ripple-background">
       <div className="circle xxlarge shade1"></div>
       <div className="circle xlarge shade2"></div>

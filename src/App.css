@@ -13,9 +13,6 @@ dark gray - 8C8C8C */
   background-color: whitesmoke;
   color: darkblue;
   font-family: Arial;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .container{

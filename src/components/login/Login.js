@@ -83,7 +83,7 @@ export default function Login(props) {
 
         <div className="tranBox">
         <div id="signInBox">
-          <h1>Peace&Pins</h1>
+          <h1>Pinsy</h1>
         <div className="googleBtn" id="login">
         <GoogleLogin
           clientId={clientId}
@@ -94,7 +94,7 @@ export default function Login(props) {
           isSignedIn={true}
           />
           </div>
-          <footer>"Pin Your Peaceful Moments Across the Globe."</footer>
+          <footer>"Pin Your Adventures Across the Globe."</footer>
           </div>
           </div>
       </div>
