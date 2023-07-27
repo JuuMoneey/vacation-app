@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Modal from 'react-modal';
 import './Attractions.css';
+import Video from "../../Video/Afterimage.mp4";
 
 const Attractions = () => {
   const [places, setPlaces] = useState([]);
@@ -165,7 +166,17 @@ const Attractions = () => {
   };
 
   return (
-    <div className='attractions'>
+  <div className='attractions'>
+    <div className="traction-video">
+          <video
+            className="traction-video"
+            src={Video}
+            muted
+            autoPlay
+            loop
+            type="video/mp4"
+          ></video>
+        </div>
 
     <div className="attractions-container">
       <h3>Browse through hotels,resturants and attractions</h3>
