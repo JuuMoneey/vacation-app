@@ -11,10 +11,10 @@ function Locations() {
   const [locations, setLocations] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCountry, setSelectedCountry] = useState(searchTermFromURL);
-  const apiEndpoint = 'ec2-34-238-40-148.compute-1.amazonaws.com'
+  const apiEndpoint = 'd1768jeapet3h0.cloudfront.net'
   
   useEffect(() => {
-    fetch(`http://${apiEndpoint}:3030/destinations`)
+    fetch(`http://${apiEndpoint}/destinations`)
       .then(response => response.json())
       .then(data => setLocations(data))
       .catch(error => console.error(error));

@@ -9,7 +9,7 @@ import SavedTrips from '../SavedTrips/SavedTrips';
 
 const AfterLoginPage = ({ userProfile}) => {
    const [savedTrips, setSavedTrips] = useState([]);
-   const apiEndpoint = 'ec2-34-238-40-148.compute-1.amazonaws.com'
+   const apiEndpoint = 'd1768jeapet3h0.cloudfront.net'
 
   useEffect(() => {
     fetchData();
@@ -19,7 +19,7 @@ const AfterLoginPage = ({ userProfile}) => {
 
    
 
-    fetch(`http://${apiEndpoint}:3030/getTrips/1`)
+    fetch(`http://${apiEndpoint}/getTrips/1`)
       .then(res => res.json())
       .then(data => setSavedTrips(data))
       .catch(error => console.error('Error fetching saved trips:', error));

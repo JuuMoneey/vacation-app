@@ -4,9 +4,9 @@ const SavedTrips = (props) => {
     const {userProfile,refreshData} =props;
     const [savedTrips, setSavedTrips] = useState([]);
 
-    const apiEndpoint = 'ec2-34-238-40-148.compute-1.amazonaws.com'
+    const apiEndpoint = 'd1768jeapet3h0.cloudfront.net'
     useEffect(() => {
-          fetch(`http://${apiEndpoint}:3030/getTripsbyuserid/${userProfile.googleId}`)
+          fetch(`http://${apiEndpoint}/getTripsbyuserid/${userProfile.googleId}`)
           .then((res) => res.json())
           .then(res => {
             setSavedTrips(res)

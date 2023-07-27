@@ -7,7 +7,7 @@ function Map() {
   const navigate = useNavigate();
   const [hoveredGeography, setHoveredGeography] = useState(null);
   const [markers, setMarkers] = useState([]);
-  const apiEndpoint = 'ec2-34-238-40-148.compute-1.amazonaws.com'
+  const apiEndpoint = 'd1768jeapet3h0.cloudfront.net'
   const handleGeographyHover = (event, geo) => {
     if (geo.rsmKey === hoveredGeography) return;
 
@@ -16,7 +16,7 @@ function Map() {
     if (hoveredGeography !== null) {
       setMarkers([]);
     } else {
-      fetch(`http://${apiEndpoint}:3030/destinations`)
+      fetch(`http://${apiEndpoint}/destinations`)
         .then(response => response.json())
         .then(data => {
           const countryMarkers = data
@@ -40,7 +40,7 @@ function Map() {
   };
 
   // useEffect(() => {
-    // fetch(`http://${apiEndpoint}:3030/destinations`)
+    // fetch(`http://${apiEndpoint}/destinations`)
   //     .then(response => response.json())
   //     .then(data => {
   //       console.log("Fetched data:", data);

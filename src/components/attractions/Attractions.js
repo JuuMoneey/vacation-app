@@ -20,11 +20,11 @@ const Attractions = ({userProfile}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropValue, setDropValue] = useState('');
   const [activeAttraction, setActiveAttraction] = useState({})
-  const apiEndpoint = 'ec2-34-238-40-148.compute-1.amazonaws.com'
+  const apiEndpoint = 'd1768jeapet3h0.cloudfront.net'
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://${apiEndpoint}:3030/getTripsByUserId/${userProfile.googleId}`);
+        const response = await fetch(`http://${apiEndpoint}/getTripsByUserId/${userProfile.googleId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -61,7 +61,7 @@ const Attractions = ({userProfile}) => {
       trip_id: parseInt(dropValue)
     }
     e.preventDefault();
-    fetch(`http://${apiEndpoint}:3030/trip`, {
+    fetch(`http://${apiEndpoint}/trip`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -121,7 +121,7 @@ const Attractions = ({userProfile}) => {
   };
 
   useEffect(() => {
-    fetch(`http://${apiEndpoint}:3030/destinations/${id}`)
+    fetch(`http://${apiEndpoint}/destinations/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setDestinations(data);
