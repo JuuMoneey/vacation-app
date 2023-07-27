@@ -186,7 +186,6 @@ const Attractions = ({userProfile}) => {
   {destinations.map((destination, index) => (
     <div key={index} className="destinationCard">
       <p>View attractions of {destination.name}</p>
-      <p>ID: {destination.id}</p>
       <img src={destination.photo} alt="destination" />
       <div className="destination-details">
         <h3>{destination.name}</h3>
