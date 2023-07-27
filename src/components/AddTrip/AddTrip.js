@@ -12,8 +12,10 @@ const AddTrip = ({ userProfile}) => {
   const [savedTrips, setSavedTrips] = useState([]);
   const [refreshData,setRefreshData] = useState(false)
 
+  const apiEndpoint = 'ec2-34-238-40-148.compute-1.amazonaws.com'
+
   useEffect(() => {
-    fetch(`http://localhost:3030/destinations`)
+    fetch(`http://${apiEndpoint}:3030/destinations`)
       .then((res) => res.json())
       .then(res => {
         setDestinations(res)
@@ -35,7 +37,7 @@ const AddTrip = ({ userProfile}) => {
       date
     };
 
-    fetch('http://localhost:3030/saved_trips', {
+    fetch(`http://${apiEndpoint}:3030/saved_trips`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
